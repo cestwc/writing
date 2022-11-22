@@ -1,0 +1,145 @@
+\usepackage{easyReview}
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{textgreek}
+% \usepackage[backend=biber,style=numeric-comp,sorting=none]{biblatex}
+\usepackage{tabularx, colortbl, xcolor}
+\definecolor{mygray}{gray}{0.95}
+\definecolor{mycyan}{HTML}{005397}
+\definecolor{myred}{HTML}{E13333}
+\definecolor{mymagenta}{HTML}{BF3E87}
+\definecolor{mypurple}{HTML}{1B2278}
+
+\definecolor{domino}{HTML}{BC9F48}
+\definecolor{catalina_blue}{HTML}{1C3168}
+\definecolor{tussock}{HTML}{C99E31}
+\definecolor{p13}{HTML}{BFB5D7}
+\definecolor{b14}{HTML}{BEA1A5}
+\definecolor{y15}{HTML}{F0Cf61}
+\newcolumntype{a}{>{\columncolor{p13}}l}
+\newcolumntype{b}{>{\columncolor{green}}c}
+\DeclareRobustCommand{\hlpurple}[1]{{\sethlcolor{p13}\hl{#1}}}
+\DeclareRobustCommand{\hlpink}[1]{{\sethlcolor{pink}\hl{#1}}}
+\DeclareRobustCommand{\hlgray}[1]{{\sethlcolor{mygray}\hl{#1}}}
+
+
+\renewcommand{\alertColor}{\textcolor{myred}}
+\renewcommand{\addColor}{\textcolor{mycyan}}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% \theoremstyle{definition}
+% \newtheorem{definition}{Definition}[section]
+% \theoremstyle{remark}
+% \newtheorem{example}{Example}[section]
+% \theoremstyle{remark}
+% \newtheorem{corpus}{Corpus Example}[section]
+
+\usepackage{braket}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\concat}{\mathbin{{+}\mspace{-8mu}{+}}}
+\newcommand{\inner}[1]{\left\langle#1\right\rangle}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\usepackage{tikz-dependency}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{chains,scopes}
+\usetikzlibrary{arrows.meta,automata,positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\usepackage{pgfplots}
+
+\pgfplotsset{
+  every axis/.append style = {thick},
+  tick style = {thick,black},
+  %
+  % #1 = x, y, or z
+  % #2 = the shift value
+  /tikz/normal shift/.code 2 args = {%
+    \pgftransformshift{%
+        \pgfpointscale{#2}{\pgfplotspointouternormalvectorofticklabelaxis{#1}}%
+    }%
+  },%
+  %
+  shift/.style = {
+    tick align        = outside,
+    scaled ticks      = false,
+    enlargelimits     = false,
+    ticklabel shift   = {#1},
+    axis lines*       = left,
+    xtick style       = {normal shift={x}{#1}},
+    ytick style       = {normal shift={y}{#1}},
+    x axis line style = {normal shift={x}{#1}},
+    y axis line style = {normal shift={y}{#1}},
+  },
+  shift/.default = 10pt,
+  shift3d/.style = {
+    shift=#1,
+    ztick style       = {normal shift={z}{#1}},
+    z axis line style = {normal shift={z}{#1}},
+  },
+  shift3d/.default = 10pt,
+}
+
+
+% \usepgfplotslibrary{shift}
+\usepackage{pifont}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{times}
+\usepackage{latexsym}
+
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{subcaption}
+
+\usepackage{listings}
+\lstset{
+  language=Python,
+%   numbers=left,
+%   numberstyle=\tiny,
+  stepnumber=1,
+  numbersep=5pt,
+  tabsize=4,
+  basicstyle=\scriptsize\ttfamily,
+  columns=fullflexible,
+  keepspaces,
+%   xleftmargin=\parindent,
+  showstringspaces=false
+}
+
+\newcommand{\RomanNumeralCaps}[1]{\MakeUppercase{\romannumeral #1}}
+\usepackage{array}
+\newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}
+\newcommand\T{\rule{0pt}{3.4mm}}
+\newcommand\B{\rule[-1.5mm]{0pt}{0pt}}
