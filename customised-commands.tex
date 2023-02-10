@@ -4,10 +4,29 @@
 \usepackage{float}
 \usepackage{wrapfig}
 \usepackage[normalem]{ulem}
-\usepackage{amsmath}
+
+
 \usepackage{bm}
 \usepackage{textcomp}
-\usepackage{amssymb}
+% \usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{pifont}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{times}
+% \usepackage{latexsym}
+\usepackage{gensymb}
+
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{subcaption}
+
 \usepackage{hyperref}
 \usepackage{textgreek}
 % \usepackage[backend=biber,style=numeric-comp,sorting=none]{biblatex}
@@ -34,11 +53,6 @@
 % \renewcommand{\alertColor}{\textcolor{myred}}
 % \renewcommand{\addColor}{\textcolor{mycyan}}
 
-\usepackage{amsthm}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{mathtools}
 
 \usepackage[capitalize,noabbrev]{cleveref}
 
@@ -113,20 +127,6 @@
 }
 
 
-% \usepgfplotslibrary{shift}
-\usepackage{pifont}
-
-% \usepackage{algorithm}
-% \usepackage{algpseudocode}
-
-\usepackage{times}
-\usepackage{latexsym}
-
-\usepackage{textcomp}
-\usepackage{multirow}
-\usepackage{lscape}
-% \usepackage{subcaption}
-
 \usepackage{listings}
 \lstset{
   language=Python,
@@ -147,3 +147,4 @@
 \newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}
 \newcommand\T{\rule{0pt}{3.4mm}}
 \newcommand\B{\rule[-1.5mm]{0pt}{0pt}}
+\newcommand{\rnumcap}[1]{\MakeUppercase{\romannumeral #1}}
