@@ -27,6 +27,7 @@
 \usepackage{lscape}
 \usepackage{subcaption}
 
+\usepackage{mdframed}
 \usepackage{hyperref}
 \usepackage{textgreek}
 % \usepackage[backend=biber,style=numeric-comp,sorting=none]{biblatex}
@@ -43,6 +44,9 @@
 \definecolor{p13}{HTML}{BFB5D7}
 \definecolor{b14}{HTML}{BEA1A5}
 \definecolor{y15}{HTML}{F0Cf61}
+\definecolor{Merino}{HTML}{F3EEE3}
+
+
 \newcolumntype{a}{>{\columncolor{p13}}l}
 % \newcolumntype{b}{>{\columncolor{green}}c}
 \DeclareRobustCommand{\hlpurple}[1]{{\sethlcolor{p13}\hl{#1}}}
@@ -78,6 +82,11 @@
 % \newtheorem{example}{Example}[section]
 % \theoremstyle{remark}
 % \newtheorem{corpus}{Corpus Example}[section]
+
+\newtheorem{requirement}{Requirement}[]
+\newtheoremstyle{researchquestionstyle}{}{}{}{}{\bf}{}{.5em}{}
+\theoremstyle{researchquestionstyle}
+\newtheorem{rquestion}{Research Question:}[]
 
 \usepackage{braket}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
