@@ -240,6 +240,18 @@
 	booktitle    = {Proceedings of the 24th International Conference on Machine Learning},
 	pages        = {33--40}
 }
+@inproceedings{andriushchenko2020square,
+	title        = {Square Attack: A Query-Efficient Black-Box Adversarial Attack via Random Search},
+	author       = {Andriushchenko, Maksym and Croce, Francesco and Flammarion, Nicolas and Hein, Matthias},
+	year         = 2020,
+	booktitle    = {Computer Vision -- ECCV 2020},
+	publisher    = {Springer International Publishing},
+	address      = {Cham},
+	pages        = {484--501},
+	isbn         = {978-3-030-58592-1},
+	editor       = {Vedaldi, Andrea and Bischof, Horst and Brox, Thomas and Frahm, Jan-Michael},
+	abstract     = {We propose the Square Attack, a score-based black-box {\$}{\$}l{\_}2{\$}{\$}l2- and {\$}{\$}l{\_}{\backslash}infty {\$}{\$}l∞-adversarial attack that does not rely on local gradient information and thus is not affected by gradient masking. Square Attack is based on a randomized search scheme which selects localized square-shaped updates at random positions so that at each iteration the perturbation is situated approximately at the boundary of the feasible set. Our method is significantly more query efficient and achieves a higher success rate compared to the state-of-the-art methods, especially in the untargeted setting. In particular, on ImageNet we improve the average query efficiency in the untargeted setting for various deep networks by a factor of at least 1.8 and up to 3 compared to the recent state-of-the-art {\$}{\$}l{\_}{\backslash}infty {\$}{\$}l∞-attack of Al-Dujaili {\&} O'Reilly (2020). Moreover, although our attack is black-box, it can also outperform gradient-based white-box attacks on the standard benchmarks achieving a new state-of-the-art in terms of the success rate. The code of our attack is available at https://github.com/max-andr/square-attack.}
+}
 @article{andriushchenko2020understanding,
 	title        = {Understanding and improving fast adversarial training},
 	author       = {Andriushchenko, Maksym and Flammarion, Nicolas},
@@ -989,6 +1001,21 @@
 	biburl       = {https://dblp.org/rec/journals/corr/abs-2204-02311.bib},
 	bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
+@inproceedings{chu2019meansum,
+	title        = {{M}ean{S}um: A Neural Model for Unsupervised Multi-Document Abstractive Summarization},
+	author       = {Chu, Eric and Liu, Peter},
+	year         = 2019,
+	month        = {09--15 Jun},
+	booktitle    = {Proceedings of the 36th International Conference on Machine Learning},
+	publisher    = {PMLR},
+	series       = {Proceedings of Machine Learning Research},
+	volume       = 97,
+	pages        = {1223--1232},
+	url          = {https://proceedings.mlr.press/v97/chu19b.html},
+	editor       = {Chaudhuri, Kamalika and Salakhutdinov, Ruslan},
+	pdf          = {http://proceedings.mlr.press/v97/chu19b/chu19b.pdf},
+	abstract     = {Abstractive summarization has been studied using neural sequence transduction methods with datasets of large, paired document-summary examples. However, such datasets are rare and the models trained from them do not generalize to other domains. Recently, some progress has been made in learning sequence-to-sequence mappings with only unpaired examples. In our work, we consider the setting where there are only documents (product or business reviews) with no summaries provided, and propose an end-to-end, neural model architecture to perform unsupervised abstractive summarization. Our proposed model consists of an auto-encoder where the mean of the representations of the input reviews decodes to a reasonable summary-review. We consider variants of the proposed architecture and perform an ablation study to show the importance of specific components. We show through metrics and human evaluation that the generated summaries are highly abstractive, fluent, relevant, and representative of the average sentiment of the input reviews. Finally, we collect a ground-truth evaluation dataset and show that our model outperforms a strong extractive baseline.}
+}
 @article{cilibrasi2007google,
 	title        = {The Google Similarity Distance},
 	author       = {Cilibrasi, Rudi L. and Vitanyi, Paul M.B.},
@@ -1089,6 +1116,21 @@
 	timestamp    = {Mon, 17 Aug 2020 11:36:12 +0200},
 	biburl       = {https://dblp.org/rec/books/daglib/0023376.bib},
 	bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+@inproceedings{croce2020minimally,
+	title        = {Minimally distorted Adversarial Examples with a Fast Adaptive Boundary Attack},
+	author       = {Croce, Francesco and Hein, Matthias},
+	year         = 2020,
+	month        = {13--18 Jul},
+	booktitle    = {Proceedings of the 37th International Conference on Machine Learning},
+	publisher    = {PMLR},
+	series       = {Proceedings of Machine Learning Research},
+	volume       = 119,
+	pages        = {2196--2205},
+	url          = {https://proceedings.mlr.press/v119/croce20a.html},
+	editor       = {III, Hal Daumé and Singh, Aarti},
+	pdf          = {http://proceedings.mlr.press/v119/croce20a/croce20a.pdf},
+	abstract     = {The evaluation of robustness against adversarial manipulation of neural networks-based classifiers is mainly tested with empirical attacks as methods for the exact computation, even when available, do not scale to large networks. We propose in this paper a new white-box adversarial attack wrt the $l_p$-norms for $p \in \{1,2,\infty\}$ aiming at finding the minimal perturbation necessary to change the class of a given input. It has an intuitive geometric meaning, yields quickly high quality results, minimizes the size of the perturbation (so that it returns the robust accuracy at every threshold with a single run). It performs better or similar to state-of-the-art attacks which are partially specialized to one $l_p$-norm, and is robust to the phenomenon of gradient obfuscation.}
 }
 @inproceedings{croce2020reliable,
 	title        = {Reliable evaluation of adversarial robustness with an ensemble of diverse parameter-free attacks},
@@ -1306,6 +1348,13 @@
 	pages        = {4685--4694},
 	doi          = {10.1109/CVPR.2019.00482}
 }
+@inproceedings{deng2019retinaface,
+	title        = {RetinaFace: Single-Shot Multi-Level Face Localisation in the Wild},
+	author       = {Deng, Jiankang and Guo, Jia and Ververas, Evangelos and Kotsia, Irene and Zafeiriou, Stefanos},
+	year         = 2020,
+	month        = {June},
+	booktitle    = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}
+}
 @article{dhillon2000technical,
 	title        = {Technical Opinion: Information System Security Management in the New Millennium},
 	author       = {Dhillon, Gurpreet and Backhouse, James},
@@ -1391,6 +1440,13 @@
 	year         = 2018,
 	month        = {June},
 	booktitle    = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}
+}
+@inproceedings{dong2019evading,
+	title        = {Evading Defenses to Transferable Adversarial Examples by Translation-Invariant Attacks},
+	author       = {Dong, Yinpeng and Pang, Tianyu and Su, Hang and Zhu, Jun},
+	year         = 2019,
+	month        = {June},
+	booktitle    = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}
 }
 @inproceedings{dong2019unified,
 	title        = {Unified Language Model Pre-training for Natural Language Understanding and Generation},
@@ -1894,6 +1950,11 @@
 	editor       = {Foley, Simon N. and Gollmann, Dieter and Snekkenes, Einar},
 	abstract     = {Machine learning models are known to lack robustness against inputs crafted by an adversary. Such adversarial examples can, for instance, be derived from regular inputs by introducing minor---yet carefully selected---perturbations.}
 }
+@misc{guide51,
+	title        = {Iso/iec guide 51: Safety aspects-guidelines for their inclusion in standards. Geneva, Switzerland},
+	author       = {ISO},
+	year         = 2014
+}
 @inproceedings{guo2017calibration,
 	title        = {On calibration of modern neural networks},
 	author       = {Guo, Chuan and Pleiss, Geoff and Sun, Yu and Weinberger, Kilian Q},
@@ -2165,6 +2226,23 @@
 	abstract     = {Social networks such as Facebook, LinkedIn, and Twitter have been a crucial source of information for a wide spectrum of users. In Twitter, popular information that is deemed important by the community propagates through the network. Studying the characteristics of content in the messages becomes important for a number of tasks, such as breaking news detection, personalized message recommendation, friends recommendation, sentiment analysis and others. While many researchers wish to use standard text mining tools to understand messages on Twitter, the restricted length of those messages prevents them from being employed to their full potential.We address the problem of using standard topic models in micro-blogging environments by studying how the models can be trained on the dataset. We propose several schemes to train a standard topic model and compare their quality and effectiveness through a set of carefully designed experiments from both qualitative and quantitative perspectives. We show that by training a topic model on aggregated messages we can obtain a higher quality of learned model which results in significantly better performance in two real-world classification problems. We also discuss how the state-of-the-art Author-Topic model fails to model hierarchical relationships between entities in Social Media.},
 	numpages     = 9,
 	keywords     = {topic models, Twitter, social media}
+}
+@inproceedings{hu2004mining,
+	title        = {Mining and Summarizing Customer Reviews},
+	author       = {Hu, Minqing and Liu, Bing},
+	year         = 2004,
+	booktitle    = {Proceedings of the Tenth ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},
+	location     = {Seattle, WA, USA},
+	publisher    = {Association for Computing Machinery},
+	address      = {New York, NY, USA},
+	series       = {KDD '04},
+	pages        = {168–177},
+	doi          = {10.1145/1014052.1014073},
+	isbn         = 1581138881,
+	url          = {https://doi.org/10.1145/1014052.1014073},
+	abstract     = {Merchants selling products on the Web often ask their customers to review the products that they have purchased and the associated services. As e-commerce is becoming more and more popular, the number of customer reviews that a product receives grows rapidly. For a popular product, the number of reviews can be in hundreds or even thousands. This makes it difficult for a potential customer to read them to make an informed decision on whether to purchase the product. It also makes it difficult for the manufacturer of the product to keep track and to manage customer opinions. For the manufacturer, there are additional difficulties because many merchant sites may sell the same product and the manufacturer normally produces many kinds of products. In this research, we aim to mine and to summarize all the customer reviews of a product. This summarization task is different from traditional text summarization because we only mine the features of the product on which the customers have expressed their opinions and whether the opinions are positive or negative. We do not summarize the reviews by selecting a subset or rewrite some of the original sentences from the reviews to capture the main points as in the classic text summarization. Our task is performed in three steps: (1) mining product features that have been commented on by customers; (2) identifying opinion sentences in each review and deciding whether each opinion sentence is positive or negative; (3) summarizing the results. This paper proposes several novel techniques to perform these tasks. Our experimental results using reviews of a number of products sold online demonstrate the effectiveness of the techniques.},
+	numpages     = 10,
+	keywords     = {summarization, text mining, sentiment classification, reviews}
 }
 @article{hu2012manipulation,
 	title        = {Manipulation of online reviews: An analysis of ratings, readability, and sentiments},
@@ -2549,6 +2627,12 @@
 	isbn         = {978-3-540-40931-1},
 	editor       = {Euzenat, J{\'e}r{\^o}me and Domingue, John},
 	abstract     = {Automatic authorship identification offers a valuable tool for supporting crime investigation and security. It can be seen as a multi-class, single-label text categorization task. Character n-grams are a very successful approach to represent text for stylistic purposes since they are able to capture nuances in lexical, syntactical, and structural level. So far, character n-grams of fixed length have been used for authorship identification. In this paper, we propose a variable-length n-gram approach inspired by previous work for selecting variable-length word sequences. Using a subset of the new Reuters corpus, consisting of texts on the same topic by 50 different authors, we show that the proposed approach is at least as effective as information gain for selecting the most significant n-grams although the feature sets produced by the two methods have few common members. Moreover, we explore the significance of digits for distinguishing between authors showing that an increase in performance can be achieved using simple text pre-processing.}
+}
+@article{kim2020torchattacks,
+	title        = {Torchattacks: A pytorch repository for adversarial attacks},
+	author       = {Kim, Hoki},
+	year         = 2020,
+	journal      = {arXiv preprint arXiv:2010.01950}
 }
 @inproceedings{kingma2014adam,
 	title        = {Adam: {A} Method for Stochastic Optimization},
@@ -3033,6 +3117,13 @@
 	biburl       = {https://dblp.org/rec/conf/iclr/LinFSYXZB17.bib},
 	bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
+@inproceedings{lin2019nesterov,
+	title        = {Nesterov Accelerated Gradient and Scale Invariance for Adversarial Attacks},
+	author       = {Jiadong Lin and Chuanbiao Song and Kun He and Liwei Wang and John E. Hopcroft},
+	year         = 2020,
+	booktitle    = {International Conference on Learning Representations},
+	url          = {https://openreview.net/forum?id=SJlHwkBYDH}
+}
 @inproceedings{linstead2007mining,
 	title        = {Mining Concepts from Code with Probabilistic Topic Models},
 	author       = {Linstead, Erik and Rigor, Paul and Bajracharya, Sushil and Lopes, Cristina and Baldi, Pierre},
@@ -3081,6 +3172,17 @@
 	month        = {July},
 	booktitle    = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
 	pages        = {212--220}
+}
+@inproceedings{liu2018adv,
+	title        = {Adv-BNN: Improved Adversarial Defense through Robust Bayesian Neural Network},
+	author       = {Xuanqing Liu and Yao Li and Chongruo Wu and Cho{-}Jui Hsieh},
+	year         = 2019,
+	booktitle    = {7th International Conference on Learning Representations, {ICLR} 2019, New Orleans, LA, USA, May 6-9, 2019},
+	publisher    = {OpenReview.net},
+	url          = {https://openreview.net/forum?id=rk4Qso0cKm},
+	timestamp    = {Sun, 02 Oct 2022 16:05:32 +0200},
+	biburl       = {https://dblp.org/rec/conf/iclr/LiuLWH19.bib},
+	bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 @inproceedings{liu2018generative,
 	title        = {Generative Adversarial Network for Abstractive Text Summarization},
@@ -3401,6 +3503,12 @@
 	url          = {https://doi.org/10.1007/s00607-022-01052-x},
 	abstract     = {A self-adaptive system can automatically maintain its quality requirements in the presence of dynamic environment changes. Developing a self-adaptive system may be difficult due to design time uncertainty; e.g., anticipating all potential environment changes at design time is in most cases infeasible. To realize self-adaptive systems in the presence of design time uncertainty, online machine learning, i.e., machine learning at runtime, is increasingly used. In particular, online reinforcement learning is proposed, which learns suitable adaptation actions through interactions with the environment at runtime. To learn about its environment, online reinforcement learning has to select actions that were not selected before, which is known as exploration. How exploration happens impacts the performance of the learning process. We focus on two problems related to how adaptation actions are explored. First, existing solutions randomly explore adaptation actions and thus may exhibit slow learning if there are many possible adaptation actions. Second, they are unaware of system evolution, and thus may explore new adaptation actions introduced during evolution rather late. We propose novel exploration strategies that use feature models (from software product line engineering) to guide exploration in the presence of many adaptation actions and system evolution. Experimental results for two realistic self-adaptive systems indicate an average speed-up of the learning process of 33.7{\%} in the presence of many adaptation actions, and of 50.6{\%} in the presence of evolution.}
 }
+@misc{michaelis2019benchmarking,
+	title        = {Benchmarking Robustness in Object Detection: Autonomous Driving when Winter is Coming},
+	author       = {Claudio Michaelis and Benjamin Mitzkus and Robert Geirhos and Evgenia Rusak and Oliver Bringmann and Alexander S. Ecker and Matthias Bethge and Wieland Brendel},
+	year         = 2020,
+	url          = {https://openreview.net/forum?id=ryljMpNtwr}
+}
 @inproceedings{mihalcea2007wikify,
 	title        = {Wikify! Linking Documents to Encyclopedic Knowledge},
 	author       = {Mihalcea, Rada and Csomai, Andras},
@@ -3622,6 +3730,24 @@
 	timestamp    = {Thu, 13 Oct 2022 14:33:15 +0200},
 	biburl       = {https://dblp.org/rec/journals/corr/abs-2210-04871.bib},
 	bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+@article{muller2022prima,
+	title        = {PRIMA: General and Precise Neural Network Certification via Scalable Convex Hull Approximations},
+	author       = {M\"{u}ller, Mark Niklas and Makarchuk, Gleb and Singh, Gagandeep and P\"{u}schel, Markus and Vechev, Martin},
+	year         = 2022,
+	month        = {jan},
+	journal      = {Proc. ACM Program. Lang.},
+	publisher    = {Association for Computing Machinery},
+	address      = {New York, NY, USA},
+	volume       = 6,
+	number       = {POPL},
+	doi          = {10.1145/3498704},
+	url          = {https://doi.org/10.1145/3498704},
+	issue_date   = {January 2022},
+	abstract     = {Formal verification of neural networks is critical for their safe adoption in real-world applications. However, designing a precise and scalable verifier which can handle different activation functions, realistic network architectures and relevant specifications remains an open and difficult challenge. In this paper, we take a major step forward in addressing this challenge and present a new verification framework, called PRIMA. PRIMA is both (i) general: it handles any non-linear activation function, and (ii) precise: it computes precise convex abstractions involving multiple neurons via novel convex hull approximation algorithms that leverage concepts from computational geometry. The algorithms have polynomial complexity, yield fewer constraints, and minimize precision loss. We evaluate the effectiveness of PRIMA on a variety of challenging tasks from prior work. Our results show that PRIMA is significantly more precise than the state-of-the-art, verifying robustness to input perturbations for up to 20\%, 30\%, and 34\% more images than existing work on ReLU-, Sigmoid-, and Tanh-based networks, respectively. Further, PRIMA enables, for the first time, the precise verification of a realistic neural network for autonomous driving within a few minutes.},
+	articleno    = 43,
+	numpages     = 33,
+	keywords     = {Polyhedra, Robustness, Abstract Interpretation, Convexity}
 }
 @misc{mw_sentence,
 	title        = {Sentence definition},
@@ -4041,6 +4167,16 @@
 	year         = 2015,
 	month        = {December},
 	booktitle    = {Proceedings of the IEEE International Conference on Computer Vision (ICCV)}
+}
+@inproceedings{pomponi2022pixle,
+	title        = {Pixle: a fast and effective black-box attack based on rearranging pixels},
+	author       = {Pomponi, Jary and Scardapane, Simone and Uncini, Aurelio},
+	year         = 2022,
+	booktitle    = {2022 International Joint Conference on Neural Networks (IJCNN)},
+	volume       = {},
+	number       = {},
+	pages        = {1--7},
+	doi          = {10.1109/IJCNN55064.2022.9892966}
 }
 @article{pymoo,
 	title        = {pymoo: Multi-Objective Optimization in Python},
@@ -4537,6 +4673,18 @@
 	number       = {},
 	pages        = {815--823},
 	doi          = {10.1109/CVPR.2015.7298682}
+}
+@article{schwinn2023exploring,
+	title        = {Exploring misclassifications of robust neural networks to enhance adversarial attacks},
+	author       = {Schwinn, Leo and Raab, Ren{\'e} and Nguyen, An and Zanca, Dario and Eskofier, Bjoern},
+	year         = 2023,
+	month        = {Mar},
+	day          = 21,
+	journal      = {Applied Intelligence},
+	doi          = {10.1007/s10489-023-04532-5},
+	issn         = {1573-7497},
+	url          = {https://doi.org/10.1007/s10489-023-04532-5},
+	abstract     = {Progress in making neural networks more robust against adversarial attacks is mostly marginal, despite the great efforts of the research community. Moreover, the robustness evaluation is often imprecise, making it challenging to identify promising approaches. We do an observational study on the classification decisions of 19 different state-of-the-art neural networks trained to be robust against adversarial attacks. This analysis gives a new indication of the limits of the robustness of current models on a common benchmark. In addition, our findings suggest that current untargeted adversarial attacks induce misclassification toward only a limited amount of different classes. Similarly, we find that previous attacks under-explore the perturbation space during optimization. This leads to unsuccessful attacks for samples where the initial gradient direction is not a good approximation of the final adversarial perturbation direction. Additionally, we observe that both over- and under-confidence in model predictions result in an inaccurate assessment of model robustness. Based on these observations, we propose a novel loss function for adversarial attacks that consistently improves their efficiency and success rate compared to prior attacks for all 30 analyzed models.}
 }
 @article{scikit-learn,
 	title        = {Scikit-learn: Machine Learning in {P}ython},
@@ -5702,6 +5850,13 @@
 	pages        = {2884--2896},
 	doi          = {10.1109/TIFS.2018.2833032}
 }
+@inproceedings{xie2019improving,
+	title        = {Improving Transferability of Adversarial Examples With Input Diversity},
+	author       = {Xie, Cihang and Zhang, Zhishuai and Zhou, Yuyin and Bai, Song and Wang, Jianyu and Ren, Zhou and Yuille, Alan L.},
+	year         = 2019,
+	month        = {June},
+	booktitle    = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}
+}
 @inproceedings{xie2020adversarial,
 	title        = {Adversarial examples improve image recognition},
 	author       = {Xie, Cihang and Tan, Mingxing and Gong, Boqing and Wang, Jiang and Yuille, Alan L and Le, Quoc V},
@@ -5754,6 +5909,19 @@
 	journal      = {Advances in neural information processing systems},
 	volume       = 32
 }
+@article{yang2021characterizing,
+	title        = {Characterizing the Evasion Attackability of Multi-label Classifiers},
+	author       = {Yang, Zhuo and Han, Yufei and Zhang, Xiangliang},
+	year         = 2021,
+	month        = {May},
+	journal      = {Proceedings of the AAAI Conference on Artificial Intelligence},
+	volume       = 35,
+	number       = 12,
+	pages        = {10647--10655},
+	doi          = {10.1609/aaai.v35i12.17273},
+	url          = {https://ojs.aaai.org/index.php/AAAI/article/view/17273},
+	abstractnote = {Evasion attack in multi-label learning systems is an interesting, widely witnessed, yet rarely explored research topic. Characterizing the crucial factors determining the attackability of the multi-label adversarial threat is the key to interpret the origin of the adversarial vulnerability and to understand how to mitigate it. Our study is inspired by the theory of adversarial risk bound. We associate the attackability of a targeted multi-label classifier with the regularity of the classifier and the training data distribution. Beyond the theoretical attackability analysis, we further propose an efficient empirical attackability estimator via greedy label space exploration. It provides provably computational efficiency and approximation accuracy. Substantial experimental results on real-world datasets validate the unveiled attackability factors and the effectiveness of the proposed empirical attackability indicator.}
+}
 @inproceedings{yang2021reachability,
 	title        = {Reachability analysis of deep ReLU neural networks using facet-vertex incidence.},
 	author       = {Yang, Xiaodong and Johnson, Taylor T and Tran, Hoang-Dung and Yamaguchi, Tomoya and Hoxha, Bardh and Prokhorov, Danil V},
@@ -5802,6 +5970,14 @@
 	year         = 2015,
 	booktitle    = {Proceedings of the 24th ACM International on Conference on Information and Knowledge Management},
 	pages        = {1301--1310}
+}
+@misc{yu2022survey,
+	title        = {Survey of Query-based Text Summarization},
+	author       = {Hang Yu},
+	year         = 2022,
+	eprint       = {2211.11548},
+	archiveprefix = {arXiv},
+	primaryclass = {cs.IR}
 }
 @inproceedings{zagoruyko2016wide,
 	title        = {Wide Residual Networks},
@@ -5886,6 +6062,23 @@
 	timestamp    = {Wed, 02 Dec 2020 16:43:27 +0100},
 	biburl       = {https://dblp.org/rec/conf/iclr/ZhangCSBDH19.bib},
 	bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+@inproceedings{zhang2019measuring,
+	title        = {Measuring Similarity between Brands Using Followers' Post in Social Media},
+	author       = {Zhang, Yiwei and Wang, Xueting and Sakai, Yoshiaki and Yamasaki, Toshihiko},
+	year         = 2020,
+	booktitle    = {Proceedings of the ACM Multimedia Asia},
+	location     = {Beijing, China},
+	publisher    = {Association for Computing Machinery},
+	address      = {New York, NY, USA},
+	series       = {MMAsia '19},
+	doi          = {10.1145/3338533.3366600},
+	isbn         = 9781450368414,
+	url          = {https://doi.org/10.1145/3338533.3366600},
+	abstract     = {In this paper, we propose a new measure to estimate the similarity between brands via posts of brands' followers on social network services (SNS). Our method was developed with the intention of exploring the brands that customers are likely to jointly purchase. Nowadays, brands use social media for targeted advertising because influencing users' preferences can greatly affect the trends in sales. We assume that data on SNS allows us to make quantitative comparisons between brands. Our proposed algorithm analyzes the daily photos and hashtags posted by each brand's followers. By clustering them and converting them to histograms, we can calculate the similarity between brands. We evaluated our proposed algorithm with purchase logs, credit card information, and answers to the questionnaires. The experimental results show that the purchase data maintained by a mall or a credit card company can predict the co-purchase very well, but not the customer's willingness to buy products of new brands. On the other hand, our method can predict the users' interest on brands with a correlation value over 0.53, which is pretty high considering that such interest to brands are high subjective and individual dependent.},
+	articleno    = 6,
+	numpages     = 6,
+	keywords     = {Brands, Computational Marketing, Hashtag, Social Media}
 }
 @inproceedings{zhang2019theoretically,
 	title        = {Theoretically Principled Trade-off between Robustness and Accuracy},
