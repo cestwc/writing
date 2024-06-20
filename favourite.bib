@@ -498,6 +498,21 @@
 	url          = {https://doi.org/10.1080/19325037.2018.1473180},
 	eprint       = {https://doi.org/10.1080/19325037.2018.1473180}
 }
+@article{bassett2019maximum,
+	title        = {Maximum a posteriori estimators as a limit of Bayes estimators},
+	author       = {Bassett, Robert and Deride, Julio},
+	year         = 2019,
+	month        = {Mar},
+	day          = {01},
+	journal      = {Mathematical Programming},
+	volume       = 174,
+	number       = 1,
+	pages        = {129--144},
+	doi          = {10.1007/s10107-018-1241-0},
+	issn         = {1436-4646},
+	url          = {https://doi.org/10.1007/s10107-018-1241-0},
+	abstract     = {Maximum a posteriori and Bayes estimators are two common methods of point estimation in Bayesian statistics. It is commonly accepted that maximum a posteriori estimators are a limiting case of Bayes estimators with 0--1 loss. In this paper, we provide a counterexample which shows that in general this claim is false. We then correct the claim that by providing a level-set condition for posterior densities such that the result holds. Since both estimators are defined in terms of optimization problems, the tools of variational analysis find a natural application to Bayesian point estimation.}
+}
 @inproceedings{bastani2016measuring,
 	title        = {Measuring Neural Net Robustness with Constraints},
 	author       = {Bastani, Osbert and Ioannou, Yani and Lampropoulos, Leonidas and Vytiniotis, Dimitrios and Nori, Aditya and Criminisi, Antonio},
@@ -2194,6 +2209,17 @@
 	publisher    = {IOS press Clifton, VA, USA},
 	pages        = {1--2}
 }
+@inproceedings{guerin2021certifying,
+	title        = {Certifying Emergency Landing for Safe Urban UAV},
+	author       = {Guerin, Joris and Delmas, Kevin and Guiochet, Jérémie},
+	year         = 2021,
+	booktitle    = {2021 51st Annual IEEE/IFIP International Conference on Dependable Systems and Networks Workshops (DSN-W)},
+	volume       = {},
+	number       = {},
+	pages        = {55--62},
+	doi          = {10.1109/DSN-W52860.2021.00020},
+	keywords     = {Training;Runtime;Uncertainty;Roads;Urban areas;Semantics;Unmanned aerial vehicles;UAV Emergency Landing;Certification;Run-time Monitoring;Semantic Segmentation;Safety}
+}
 @misc{guide51,
 	title        = {Iso/iec guide 51: Safety aspects-guidelines for their inclusion in standards. Geneva, Switzerland},
 	author       = {ISO},
@@ -3357,6 +3383,23 @@
 	biburl       = {https://dblp.org/rec/conf/iclr/0005BSS21.bib},
 	bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
+@inproceedings{li2022towards,
+	title        = {Towards practical robustness analysis for DNNs based on PAC-model learning},
+	author       = {Li, Renjue and Yang, Pengfei and Huang, Cheng-Chao and Sun, Youcheng and Xue, Bai and Zhang, Lijun},
+	year         = 2022,
+	booktitle    = {Proceedings of the 44th International Conference on Software Engineering},
+	location     = {Pittsburgh, Pennsylvania},
+	publisher    = {Association for Computing Machinery},
+	address      = {New York, NY, USA},
+	series       = {ICSE '22},
+	pages        = {2189–2201},
+	doi          = {10.1145/3510003.3510143},
+	isbn         = 9781450392211,
+	url          = {https://doi.org/10.1145/3510003.3510143},
+	abstract     = {To analyse local robustness properties of deep neural networks (DNNs), we present a practical framework from a model learning perspective. Based on black-box model learning with scenario optimisation, we abstract the local behaviour of a DNN via an affine model with the probably approximately correct (PAC) guarantee. From the learned model, we can infer the corresponding PAC-model robustness property. The innovation of our work is the integration of model learning into PAC robustness analysis: that is, we construct a PAC guarantee on the model level instead of sample distribution, which induces a more faithful and accurate robustness evaluation. This is in contrast to existing statistical methods without model learning. We implement our method in a prototypical tool named DeepPAC. As a black-box method, DeepPAC is scalable and efficient, especially when DNNs have complex structures or high-dimensional inputs. We extensively evaluate DeepPAC, with 4 baselines (using formal verification, statistical methods, testing and adversarial attack) and 20 DNN models across 3 datasets, including MNIST, CIFAR-10, and ImageNet. It is shown that DeepPAC outperforms the state-of-the-art statistical method PROVERO, and it achieves more practical robustness analysis than the formal verification tool ERAN. Also, its results are consistent with existing DNN testing work like DeepGini.},
+	numpages     = 13,
+	keywords     = {scenario optimization, neural networks, model learning, PAC-model robustness}
+}
 @inproceedings{li2023sok,
 	title        = {SoK: Certified Robustness for Deep Neural Networks},
 	author       = {Linyi Li and Tao Xie and Bo Li},
@@ -4038,7 +4081,8 @@
 	volume       = {},
 	number       = {},
 	pages        = {13--18},
-	doi          = {10.1109/DSP-SPE.2015.7369520}
+	doi          = {10.1109/DSP-SPE.2015.7369520},
+	keywords     = {Bit error rate;Estimation;Signal processing;Convergence;Conferences;Moon;Bayes error;divergence estimation;meta learning;classification;sunspots}
 }
 @inproceedings{moosavi2016deepfool,
 	title        = {DeepFool: {A} Simple and Accurate Method to Fool Deep Neural Networks},
@@ -6891,6 +6935,27 @@
 	issue_date   = {March 2021},
 	abstract     = {Despite their massive size, successful deep artificial neural networks can exhibit a remarkably small gap between training and test performance. Conventional wisdom attributes small generalization error either to properties of the model family or to the regularization techniques used during training.Through extensive systematic experiments, we show how these traditional approaches fail to explain why large neural networks generalize well in practice. Specifically, our experiments establish that state-of-the-art convolutional networks for image classification trained with stochastic gradient methods easily fit a random labeling of the training data. This phenomenon is qualitatively unaffected by explicit regularization and occurs even if we replace the true images by completely unstructured random noise. We corroborate these experimental findings with a theoretical construction showing that simple depth two neural networks already have perfect finite sample expressivity as soon as the number of parameters exceeds the number of data points as it usually does in practice.We interpret our experimental findings by comparison with traditional models.We supplement this republication with a new section at the end summarizing recent progresses in the field since the original version of this paper.},
 	numpages     = 9
+}
+@inproceedings{zhang2023coophance,
+	title        = {CoopHance: Cooperative Enhancement for Robustness of Deep Learning Systems},
+	author       = {Zhang, Quan and Tian, Yongqiang and Ding, Yifeng and Li, Shanshan and Sun, Chengnian and Jiang, Yu and Sun, Jiaguang},
+	year         = 2023,
+	booktitle    = {Proceedings of the 32nd ACM SIGSOFT International Symposium on Software Testing and Analysis},
+	location     = {<conf-loc>, <city>Seattle</city>, <state>WA</state>, <country>USA</country>, </conf-loc>},
+	publisher    = {Association for Computing Machinery},
+	address      = {New York, NY, USA},
+	series       = {ISSTA 2023},
+	pages        = {753–765},
+	doi          = {10.1145/3597926.3598093},
+	isbn         = 9798400702211,
+	url          = {https://doi.org/10.1145/3597926.3598093},
+	abstract     = {
+		Adversarial attacks have been a threat to Deep Learning (DL) systems to be reckoned with. By adding human-imperceptible perturbation to benign inputs, adversarial attacks can cause the incorrect behavior of DL systems. Considering the popularity of DL systems in the industry, it is critical and urgent for developers to enhance the robustness of DL systems against adversarial attacks.
+
+		In this study, we propose a novel enhancement technique for DL systems, namely CoopHance. CoopHance leverages two specifically customized components, Regulator and Inspector, to cooperatively enhance the DL systems' robustness against adversarial examples with different distortions. Regulator can purify adversarial examples with low or moderate distortions, while Inspector is responsible for detecting these adversarial examples with high distortion by capturing the abnormal status of DL systems. Our evaluation using various attacks shows that, on average, CoopHance can successfully resist 90.62\% and 96.56\% of the adversarial examples that are generated for the unprotected systems on CIFAR-10 and SVHN datasets separately, which is 188.14\% more effective than five state-of-the-art enhancement techniques, including Feature Squeeze, LID, SOAP, Adversarial Training, and MagNet. Meanwhile, when attackers generate new adversarial examples on the enhanced systems, CoopHance can reject 78.06\% of attacks, which outperforms the best of five enhancement techniques by 82.71\% on average.
+	},
+	numpages     = 13,
+	keywords     = {Robustness Enhancement, Deep Learning System}
 }
 @inproceedings{zhang2023proa,
 	title        = {PRoA: A Probabilistic Robustness Assessment Against Functional Perturbations},
