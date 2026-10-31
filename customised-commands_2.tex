@@ -1,0 +1,657 @@
+% ============================================================
+%  customised-commands.tex  —  merged from all venue variants
+%  Variants: base, ACL, ACM (acmart), LNCS (llncs),
+%            Elsevier (elsarticle), ICLR (iclr2024/iclrworkshop),
+%            IEEE (IEEEtran), ICML (icml2024), NeurIPS (neurips_2024),
+%            AAAI (aaai24/aaai25), USENIX (usenix)
+%
+%  Auto-detection uses \@ifclassloaded{<class>}{<yes>}{<no>}.
+%  All venue-specific logic is resolved at compile time — no
+%  manual editing needed when switching document class.
+% ============================================================
+
+\makeatletter
+
+% ============================================================
+%  VENUE BOOLEANS  (set once, used throughout)
+% ============================================================
+\newif\if@isACM    \@isACMfalse
+\newif\if@isLNCS   \@isLNCSfalse
+\newif\if@isELS    \@isELSfalse
+\newif\if@isACL    \@isACLfalse
+\newif\if@isICLR   \@isICLRfalse
+\newif\if@isIEEE   \@isIEEEfalse
+\newif\if@isICML   \@isICMLfalse
+\newif\if@isNIPS   \@isNIPSfalse
+\newif\if@isAAAI   \@isAAAIfalse
+\newif\if@isUSENIX \@isUSENIXfalse
+
+\@ifclassloaded{acmart}         {\@isACMtrue}{}
+\@ifclassloaded{llncs}          {\@isLNCStrue}{}
+\@ifclassloaded{elsarticle}     {\@isELStrue}{}
+\@ifclassloaded{acl}            {\@isACLtrue}{}
+\@ifclassloaded{acl2023}        {\@isACLtrue}{}
+\@ifclassloaded{acl_natbib}     {\@isACLtrue}{}
+\@ifclassloaded{iclr2024}       {\@isICLRtrue}{}
+\@ifclassloaded{iclrworkshop}   {\@isICLRtrue}{}
+\@ifclassloaded{IEEEtran}       {\@isIEEEtrue}{}
+\@ifclassloaded{icml2024}       {\@isICMLtrue}{}
+\@ifclassloaded{neurips_2024}   {\@isNIPStrue}{}
+\@ifclassloaded{aaai24}         {\@isAAAItrue}{}
+\@ifclassloaded{aaai25}         {\@isAAAItrue}{}
+\@ifclassloaded{usenix}         {\@isUSENIXtrue}{}
+
+\makeatother
+
+% -------  optional / review package  -----------------------
+% \usepackage{easyReview}
+
+% -------  language  ----------------------------------------
+% IEEE, ICML, NeurIPS handle language internally — skip babel there.
+\makeatletter
+\if@isIEEE\else\if@isICML\else\if@isNIPS\else
+  \usepackage[english]{babel}
+\fi\fi\fi
+\makeatother
+
+% -------  geometry  ----------------------------------------
+% ACL loads geometry explicitly; other classes manage their own margins.
+\makeatletter
+\if@isACL
+  \usepackage{geometry}
+  % \usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\fi
+\makeatother
+
+% -------  bibliography  ------------------------------------
+% ACM, IEEE, ICML, NeurIPS, AAAI all provide their own citation machinery.
+% ICLR: natbib loaded by the class itself; only the \cite redefinition is needed.
+% USENIX: uses numeric natbib style (no author-year \cite redefinition).
+\makeatletter
+\if@isACM\else\if@isIEEE\else\if@isICML\else\if@isNIPS\else\if@isAAAI\else
+  \if@isUSENIX
+    \usepackage[numbers]{natbib}
+  \else\if@isICLR
+    % natbib provided by iclr class; redefine \cite only
+    \let\oldcite\cite
+    \renewcommand{\cite}[1]{\citep{#1}}
+  \else
+    \usepackage{natbib}  % \bibliographystyle{plainnat}
+    \let\oldcite\cite
+    \renewcommand{\cite}[1]{\citep{#1}}
+  \fi\fi
+\fi\fi\fi\fi\fi
+\makeatother
+% \usepackage[backend=biber,style=numeric-comp,sorting=none]{biblatex}
+
+% -------  graphics & layout  -------------------------------
+\usepackage{graphicx}
+% IEEE, ICML, NeurIPS load microtype themselves or are incompatible.
+\makeatletter
+\if@isIEEE\else\if@isICML\else\if@isNIPS\else
+  \usepackage{microtype}
+\fi\fi\fi
+\makeatother
+% \usepackage{subfigure}
+\usepackage{booktabs}
+% AAAI discourages float / wrapfig / ulem.
+\makeatletter
+\if@isAAAI\else
+  \usepackage{float}
+  \usepackage{wrapfig}
+  \usepackage[normalem]{ulem}
+\fi
+\makeatother
+
+% -------  USENIX-specific layout packages  -----------------
+\makeatletter
+\if@isUSENIX
+  \usepackage{url}
+  \usepackage{cuted}    % strip environment for full-width floats
+  \usepackage{capt-of}  % captions outside float environments
+\fi
+\makeatother
+
+% -------  math  --------------------------------------------
+\usepackage{bm}
+\usepackage{textcomp}
+% ACM, IEEE, ICML, NeurIPS already load amssymb via their font/class setup.
+\makeatletter
+\if@isACM\else\if@isIEEE\else\if@isICML\else\if@isNIPS\else
+  \usepackage{amssymb}
+\fi\fi\fi\fi
+\makeatother
+\usepackage{amsmath}
+% LNCS provides its own theorem environments including amsthm — skip it there.
+\makeatletter
+\if@isLNCS\else
+  \usepackage{amsthm}
+\fi
+\makeatother
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{pifont}
+
+% -------  algorithms  --------------------------------------
+\usepackage{algorithm}
+% ACM and AAAI use algpseudocode; all other venues use algorithmic.
+\makeatletter
+\if@isACM
+  \usepackage{algpseudocode}
+\else\if@isAAAI
+  \usepackage{algpseudocode}
+\else
+  \usepackage{algorithmic}
+\fi\fi
+\makeatother
+
+% LNCS-only: inline comment command for algorithm floats.
+\makeatletter
+\if@isLNCS
+  \newcommand{\algcomment}[2][gray]{%
+    \unskip\hfill{\footnotesize\textcolor{#1}{// #2}}%
+  }
+\fi
+\makeatother
+
+% -------  fonts & symbols  ---------------------------------
+% ACM and AAAI manage their own fonts — \usepackage{times} conflicts.
+\makeatletter
+\if@isACM\else\if@isAAAI\else
+  \usepackage{times}
+\fi\fi
+\makeatother
+% \usepackage{latexsym}
+% AAAI omits gensymb and textgreek (class conflicts).
+\makeatletter
+\if@isAAAI\else
+  \usepackage{gensymb}
+\fi
+\makeatother
+
+% -------  table & figure utilities  ------------------------
+\usepackage{multirow}
+% AAAI omits lscape.
+\makeatletter
+\if@isAAAI\else
+  \usepackage{lscape}
+\fi
+\makeatother
+\usepackage{subcaption}
+
+% -------  frames, boxes, hyperlinks  -----------------------
+\usepackage{mdframed}
+% AAAI disallows hyperref in submissions.
+\makeatletter
+\if@isAAAI\else
+  \usepackage{hyperref}
+\fi
+\makeatother
+\makeatletter
+\if@isAAAI\else
+  \usepackage{textgreek}
+\fi
+\makeatother
+
+% -------  color & table color  -----------------------------
+\usepackage{tabularx, colortbl}
+\usepackage[dvipsnames]{xcolor}
+
+% ACM-only: TikZ physics shorthand color.
+% xcol (steel blue) -> RoyalBlue (dvipsnames)
+\makeatletter
+\if@isACM
+  \colorlet{xcol}{RoyalBlue}
+\fi
+\makeatother
+
+% AAAI-only: large annotated diverging color palette (hex-named).
+% Each color name is the hex value itself for use as \color{4A7BB7} etc.
+\makeatletter
+\if@isAAAI
+  \definecolor{4A7BB7}{HTML}{4A7BB7}
+  \definecolor{91C4DE}{HTML}{91C4DE}
+  \definecolor{FED081}{HTML}{FED081}
+  \definecolor{F7834D}{HTML}{F7834D}
+  \definecolor{8ECFC9}{HTML}{8ECFC9}
+  \definecolor{FFBE7A}{HTML}{FFBE7A}
+  \definecolor{FA7F6F}{HTML}{FA7F6F}
+  \definecolor{82B0D2}{HTML}{82B0D2}
+  % Reds & Pinks
+  \definecolor{D62728}{HTML}{D62728}   % amaranth red
+  \definecolor{E13333}{HTML}{E13333}   % strong crimson
+  \definecolor{C63D52}{HTML}{C63D52}   % dark scarlet
+  \definecolor{F67088}{HTML}{F67088}   % coral
+  \definecolor{F77189}{HTML}{F77189}   % ultrared
+  \definecolor{FFB3B2}{HTML}{FFB3B2}   % light strawberry
+  % Magentas & Purples
+  \definecolor{BF3E87}{HTML}{BF3E87}   % magenta rose
+  \definecolor{F584C5}{HTML}{F584C5}   % tearose
+  \definecolor{E377C2}{HTML}{E377C2}   % middle purple
+  \definecolor{9467BD}{HTML}{9467BD}   % soft purple
+  \definecolor{7B7AB7}{HTML}{7b7ab7}   % ube lavender
+  \definecolor{1B2278}{HTML}{1B2278}   % royal blue-purple
+  \definecolor{4E518B}{HTML}{4E518B}   % twilight indigo
+  % Blues
+  \definecolor{005397}{HTML}{005397}   % deep navy cyan
+  \definecolor{023047}{HTML}{023047}   % prussian blue
+  \definecolor{1C3168}{HTML}{1C3168}   % catalina blue
+  \definecolor{327BB7}{HTML}{327bb7}   % steel blue
+  \definecolor{1F77B4}{HTML}{1F77B4}   % mid blue
+  \definecolor{3BA3EC}{HTML}{3BA3EC}   % dodger blue
+  \definecolor{90C9E6}{HTML}{90C9E6}   % cornflower
+  \definecolor{94C3E1}{HTML}{94C3E1}   % light sky blue
+  \definecolor{A2B1C3}{HTML}{A2B1C3}   % steel gray-blue
+  % Teals & Greens
+  \definecolor{0192A8}{HTML}{0192A8}   % cerulean
+  \definecolor{17BECF}{HTML}{17BECF}   % battery charged blue
+  \definecolor{219EBC}{HTML}{219EBC}   % pacific blue
+  \definecolor{36ADA4}{HTML}{36ADA4}   % keppel teal
+  \definecolor{2CA02C}{HTML}{2CA02C}   % wageningen green
+  \definecolor{AEDB89}{HTML}{AEDB89}   % pale green apple
+  \definecolor{B3FEAE}{HTML}{B3FEAE}   % minty pastel
+  % Yellows & Yellow-Greens
+  \definecolor{BCBD22}{HTML}{BCBD22}   % acid green
+  \definecolor{C99E31}{HTML}{C99E31}   % tussock mustard
+  \definecolor{F0CF61}{HTML}{F0CF61}   % golden yellow
+  \definecolor{BC9F48}{HTML}{BC9F48}   % domino gold
+  % Browns & Earth Tones
+  \definecolor{8C564B}{HTML}{8C564B}   % spicy mix brown
+  \definecolor{BEA1A5}{HTML}{BEA1A5}   % dusty mauve
+  % Pastels & Neutrals
+  \definecolor{BFB5D7}{HTML}{BFB5D7}   % pale lavender
+  \definecolor{FFD8B0}{HTML}{FFD8B0}   % peachy pink
+  \definecolor{F3EEE3}{HTML}{F3EEE3}   % merino cream
+  \definecolor{D9D9D9}{HTML}{D9D9D9}   % light silver
+  % Blacks
+  \definecolor{000000}{HTML}{000000}   % pure black
+  \definecolor{333333}{HTML}{333333}   % near black
+\fi
+\makeatother
+
+% ACL table header/row shading — available color names for use in tables:
+%   headerpink  -> Salmon!30    headergreen -> LimeGreen!30
+%   roworange   -> Peach!50     rowgray     -> lightgray!50
+%   textorange  -> BurntOrange
+
+% -------  column types & highlight commands  ---------------
+% Color mapping from originals to xcolor dvipsnames:
+%   p13 (soft lavender) -> Lavender
+%   mygray (near-white) -> lightgray
+%   pink                -> Pink
+% AAAI comments these out (class conflicts).
+\makeatletter
+\if@isAAAI\else
+  \newcolumntype{a}{>{\columncolor{Lavender}}l}
+  % \newcolumntype{b}{>{\columncolor{LimeGreen}}c}
+  \DeclareRobustCommand{\hlpurple}[1]{{\sethlcolor{Lavender}\hl{#1}}}
+  \DeclareRobustCommand{\hlpink}[1]{{\sethlcolor{Pink}\hl{#1}}}
+  \DeclareRobustCommand{\hlgray}[1]{{\sethlcolor{lightgray}\hl{#1}}}
+\fi
+\makeatother
+
+% \renewcommand{\alertColor}{\textcolor{Red}}
+% \renewcommand{\addColor}{\textcolor{Cyan}}
+
+% -------  cleveref  ----------------------------------------
+\usepackage[capitalize,noabbrev]{cleveref}
+% AAAI comments all crefnames out (conflicts with its own referencing).
+\makeatletter
+\if@isAAAI\else
+  \crefname{ineq}{Inequality}{Inequalities}
+  \creflabelformat{ineq}{#2{\upshape(#1)}#3}
+\fi
+% obj / exp cref names: Elsevier, LNCS, IEEE, ICML, NeurIPS.
+\if@isELS
+  \crefname{obj}{Objective}{Objectives}
+  \creflabelformat{obj}{#2{\upshape(#1)}#3}
+  \crefname{exp}{Expression}{Expressions}
+  \creflabelformat{exp}{#2{\upshape(#1)}#3}
+\fi
+\if@isLNCS
+  \crefname{obj}{Objective}{Objectives}
+  \creflabelformat{obj}{#2{\upshape(#1)}#3}
+  \crefname{exp}{Expression}{Expressions}
+  \creflabelformat{exp}{#2{\upshape(#1)}#3}
+\fi
+\if@isIEEE
+  \crefname{obj}{Objective}{Objectives}
+  \creflabelformat{obj}{#2{\upshape(#1)}#3}
+  \crefname{exp}{Expression}{Expressions}
+  \creflabelformat{exp}{#2{\upshape(#1)}#3}
+\fi
+\if@isICML
+  \crefname{obj}{Objective}{Objectives}
+  \creflabelformat{obj}{#2{\upshape(#1)}#3}
+  \crefname{exp}{Expression}{Expressions}
+  \creflabelformat{exp}{#2{\upshape(#1)}#3}
+\fi
+\if@isNIPS
+  \crefname{obj}{Objective}{Objectives}
+  \creflabelformat{obj}{#2{\upshape(#1)}#3}
+  \crefname{exp}{Expression}{Expressions}
+  \creflabelformat{exp}{#2{\upshape(#1)}#3}
+\fi
+\makeatother
+
+% -------  theorem environments  ----------------------------
+% reptheorem helper: lets you restate theorems by label.
+% Used in: base, ACL, ICLR, USENIX.
+% Not used in: ACM, ELS, LNCS, IEEE, ICML, NeurIPS, AAAI.
+\makeatletter
+\if@isACM\else\if@isELS\else\if@isLNCS\else
+\if@isIEEE\else\if@isICML\else\if@isNIPS\else\if@isAAAI\else
+  \newtheorem*{rep@theorem}{\rep@title}
+  \newcommand{\newreptheorem}[2]{%
+  \newenvironment{rep#1}[1]{%
+  \def\rep@title{#2 \ref{##1}}%
+  \begin{rep@theorem}}%
+  {\end{rep@theorem}}}
+\fi\fi\fi\fi\fi\fi\fi
+\makeatother
+
+% LNCS defines all theorem environments itself — skip them there.
+% ICML comments all theorems out — skip them there too.
+\makeatletter
+\if@isLNCS\else\if@isICML\else
+
+  \theoremstyle{remark}
+  \newtheorem{example}{Example}[]
+  % reptheorem variants: base, ACL, ICLR, USENIX only
+  \if@isACM\else\if@isELS\else\if@isIEEE\else\if@isNIPS\else\if@isAAAI\else
+    \newreptheorem{example}{Example}
+  \fi\fi\fi\fi\fi
+
+  \theoremstyle{plain}
+  \newtheorem{theorem}{Theorem}[section]
+  \if@isACM\else\if@isELS\else\if@isIEEE\else\if@isNIPS\else\if@isAAAI\else
+    \newreptheorem{theorem}{Theorem}
+  \fi\fi\fi\fi\fi
+
+  \newtheorem{proposition}[theorem]{Proposition}
+  \newtheorem{lemma}[theorem]{Lemma}
+  \if@isACM\else\if@isELS\else\if@isIEEE\else\if@isNIPS\else\if@isAAAI\else
+    \newreptheorem{lemma}{Lemma}
+  \fi\fi\fi\fi\fi
+
+  \newtheorem{corollary}[theorem]{Corollary}
+  \if@isACM\else\if@isELS\else\if@isIEEE\else\if@isNIPS\else\if@isAAAI\else
+    \newreptheorem{corollary}{Corollary}
+  \fi\fi\fi\fi\fi
+
+  \theoremstyle{definition}
+  \newtheorem{definition}[theorem]{Definition}
+  % AAAI omits assumption and remark
+  \if@isAAAI\else
+    \newtheorem{assumption}[theorem]{Assumption}
+    \theoremstyle{remark}
+    \newtheorem{remark}[theorem]{Remark}
+  \fi
+
+\fi\fi % end \if@isLNCS\else\if@isICML\else
+\makeatother
+
+% ACM-only: requirement and research question theorem types.
+\makeatletter
+\if@isACM
+  \newtheorem{requirement}{Requirement}[]
+  \newtheoremstyle{researchquestionstyle}{}{}{}{}{{\bf}}{}{.5em}{}
+  \theoremstyle{researchquestionstyle}
+  \newtheorem{rquestion}{Research Question:}[]
+\fi
+% IEEE-only: requirement (but not rquestion).
+\if@isIEEE
+  \newtheorem{requirement}{Requirement}[]
+\fi
+\makeatother
+
+% -------  math operators & notation  -----------------------
+\usepackage{braket}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\concat}{\mathbin{{+}\mspace{-8mu}{+}}}
+\newcommand{\inner}[1]{\left\langle#1\right\rangle}
+\usepackage{stmaryrd}
+\newcommand{\iverson}[1]{\left\llbracket#1\right\rrbracket}
+
+% AAAI comments argmax/argmin out (provided by its class).
+\makeatletter
+\if@isAAAI\else
+  \DeclareMathOperator*{\argmax}{arg\,max}
+  \DeclareMathOperator*{\argmin}{arg\,min}
+\fi
+\makeatother
+
+% -------  physics (ACM only)  ------------------------------
+\makeatletter
+\if@isACM
+  \usepackage{physics}
+\fi
+\makeatother
+
+% -------  TikZ & PGFPlots  ---------------------------------
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\usepackage{tikz-dependency}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{chains,scopes}
+\usetikzlibrary{arrows.meta,automata,positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc, fit, shadows}
+
+% ACM-only: enforce LaTeX-style arrow heads globally.
+\makeatletter
+\if@isACM
+  \tikzset{>=latex}
+\fi
+\makeatother
+
+\usepackage{pgfplots}
+% compat=newest + fillbetween: base, ACL, ICLR, USENIX.
+% fillbetween only (no compat=newest): AAAI.
+% Neither: ACM, LNCS, ELS, IEEE, ICML, NeurIPS.
+\makeatletter
+\if@isACL
+  \pgfplotsset{compat=newest}
+  \usepgfplotslibrary{fillbetween}
+\else\if@isICLR
+  \pgfplotsset{compat=newest}
+  \usepgfplotslibrary{fillbetween}
+\else\if@isUSENIX
+  \pgfplotsset{compat=newest}
+  \usepgfplotslibrary{fillbetween}
+\else\if@isAAAI
+  \usepgfplotslibrary{fillbetween}
+\else\if@isACM\else\if@isLNCS\else\if@isELS\else
+\if@isIEEE\else\if@isICML\else\if@isNIPS\else
+  % base/generic: also use compat=newest + fillbetween
+  \pgfplotsset{compat=newest}
+  \usepgfplotslibrary{fillbetween}
+\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi
+\makeatother
+
+\pgfplotsset{
+  every axis/.append style = {thick},
+  tick style = {thick,black},
+  %
+  % #1 = x, y, or z  |  #2 = the shift value
+  /tikz/normal shift/.code 2 args = {%
+    \pgftransformshift{%
+        \pgfpointscale{#2}{\pgfplotspointouternormalvectorofticklabelaxis{#1}}%
+    }%
+  },%
+  shift/.style = {
+    tick align        = outside,
+    scaled ticks      = false,
+    enlargelimits     = false,
+    ticklabel shift   = {#1},
+    axis lines*       = left,
+    xtick style       = {normal shift={x}{#1}},
+    ytick style       = {normal shift={y}{#1}},
+    x axis line style = {normal shift={x}{#1}},
+    y axis line style = {normal shift={y}{#1}},
+  },
+  shift/.default = 10pt,
+  shift3d/.style = {
+    shift=#1,
+    ztick style       = {normal shift={z}{#1}},
+    z axis line style = {normal shift={z}{#1}},
+  },
+  shift3d/.default = 10pt,
+}
+
+% TikZ flow-chart styles — ELS, LNCS, IEEE, ICML, NeurIPS, AAAI.
+\makeatletter
+\if@isELS
+  \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=1cm, minimum height=0.5cm, text centered, draw=black]
+  \tikzstyle{io}        = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=2cm, minimum height=0.63cm, text centered, draw=black]
+  \tikzstyle{process}   = [rectangle, minimum width=2cm,   minimum height=0.5cm, text centered, draw=black]
+  \tikzstyle{process_n} = [rectangle, minimum width=1.5cm, minimum height=0.5cm, text centered, text width=1.5cm, draw=black]
+  \tikzstyle{decision}  = [diamond, minimum width=1.2cm, minimum height=0.5cm, text width=1.5cm, text centered, aspect=1.5, draw=black]
+  \tikzstyle{arrow}     = [->,>=stealth]
+\fi
+\if@isLNCS
+  \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=1cm, minimum height=0.5cm, text centered, draw=black]
+  \tikzstyle{io}        = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=2cm, minimum height=0.63cm, text centered, draw=black]
+  \tikzstyle{process}   = [rectangle, minimum width=2cm,   minimum height=0.5cm, text centered, draw=black]
+  \tikzstyle{process_n} = [rectangle, minimum width=1.5cm, minimum height=0.5cm, text centered, text width=1.5cm, draw=black]
+  \tikzstyle{decision}  = [diamond, minimum width=1.2cm, minimum height=0.5cm, text width=1.5cm, text centered, aspect=1.5, draw=black]
+  \tikzstyle{arrow}     = [->,>=stealth]
+  % LNCS-only: anchor-highlight helper
+  \newcommand{\markline}[1]{%
+    \tikz[remember picture,baseline] \node (#1) {};%
+  }
+\fi
+\if@isIEEE
+  \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=1cm, minimum height=0.5cm, text centered, draw=black]
+  \tikzstyle{io}        = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=2cm, minimum height=0.63cm, text centered, draw=black]
+  \tikzstyle{process}   = [rectangle, minimum width=2cm,   minimum height=0.5cm, text centered, draw=black]
+  \tikzstyle{process_n} = [rectangle, minimum width=1.5cm, minimum height=0.5cm, text centered, text width=1.5cm, draw=black]
+  \tikzstyle{decision}  = [diamond, minimum width=1.2cm, minimum height=0.5cm, text width=1.5cm, text centered, aspect=1.5, draw=black]
+  \tikzstyle{arrow}     = [->,>=stealth]
+\fi
+\if@isICML
+  \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=1cm, minimum height=0.5cm, text centered, draw=black]
+  \tikzstyle{io}        = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=2cm, minimum height=0.63cm, text centered, draw=black]
+  \tikzstyle{process}   = [rectangle, minimum width=2cm,   minimum height=0.5cm, text centered, draw=black]
+  \tikzstyle{process_n} = [rectangle, minimum width=1.5cm, minimum height=0.5cm, text centered, text width=1.5cm, draw=black]
+  \tikzstyle{decision}  = [diamond, minimum width=1.2cm, minimum height=0.5cm, text width=1.5cm, text centered, aspect=1.5, draw=black]
+  \tikzstyle{arrow}     = [->,>=stealth]
+\fi
+\if@isNIPS
+  \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=1cm, minimum height=0.5cm, text centered, draw=black]
+  \tikzstyle{io}        = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=2cm, minimum height=0.63cm, text centered, draw=black]
+  \tikzstyle{process}   = [rectangle, minimum width=2cm,   minimum height=0.5cm, text centered, draw=black]
+  \tikzstyle{process_n} = [rectangle, minimum width=1.5cm, minimum height=0.5cm, text centered, text width=1.5cm, draw=black]
+  \tikzstyle{decision}  = [diamond, minimum width=1.2cm, minimum height=0.5cm, text width=1.5cm, text centered, aspect=1.5, draw=black]
+  \tikzstyle{arrow}     = [->,>=stealth]
+\fi
+\if@isAAAI
+  \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=1cm, minimum height=0.5cm, text centered, draw=black]
+  \tikzstyle{io}        = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=2cm, minimum height=0.63cm, text centered, draw=black]
+  \tikzstyle{process}   = [rectangle, minimum width=2cm,   minimum height=0.5cm, text centered, draw=black]
+  \tikzstyle{process_n} = [rectangle, minimum width=1.5cm, minimum height=0.5cm, text centered, text width=1.5cm, draw=black]
+  \tikzstyle{decision}  = [diamond, minimum width=1.2cm, minimum height=0.5cm, text width=1.5cm, text centered, aspect=1.5, draw=black]
+  \tikzstyle{arrow}     = [->,>=stealth]
+\fi
+\makeatother
+
+% -------  IEEE-only: paragraph heading style  --------------
+\makeatletter
+\if@isIEEE
+  \renewcommand\paragraph[1]{{\vspace{1mm}\noindent\bfseries #1 }}
+\fi
+\makeatother
+
+% -------  font icons (ACM only)  ---------------------------
+\makeatletter
+\if@isACM
+  \usepackage{fontawesome5}
+  % \usepackage{emoji}   % requires LuaLaTeX/XeLaTeX
+\fi
+\makeatother
+
+% -------  code listings  -----------------------------------
+% AAAI comments listings out (conflicts with its class).
+\makeatletter
+\if@isAAAI\else
+  \usepackage{listings}
+  \lstset{
+    language=Python,
+  %   numbers=left,
+  %   numberstyle=\tiny,
+    stepnumber=1,
+    numbersep=5pt,
+    tabsize=4,
+    basicstyle=\scriptsize\ttfamily,
+    columns=fullflexible,
+    keepspaces,
+  %   xleftmargin=\parindent,
+    showstringspaces=false
+  }
+\fi
+\makeatother
+
+% JSON language definition (ACM only).
+% Color mapping: numb -> Maroon | punct -> BrickRed | delim -> OliveGreen
+\makeatletter
+\if@isACM
+  \lstdefinelanguage{json}{
+    basicstyle=\scriptsize\ttfamily,
+    numbers=none,
+    stepnumber=1,
+    numbersep=5pt,
+    showstringspaces=false,
+    breaklines=true,
+    frame=single,
+    backgroundcolor=\color{lightgray!30},
+    literate=
+     *{0}{{{ \color{Maroon}0}}}{1}
+      {1}{{{ \color{Maroon}1}}}{1}
+      {2}{{{ \color{Maroon}2}}}{1}
+      {3}{{{ \color{Maroon}3}}}{1}
+      {4}{{{ \color{Maroon}4}}}{1}
+      {5}{{{ \color{Maroon}5}}}{1}
+      {6}{{{ \color{Maroon}6}}}{1}
+      {7}{{{ \color{Maroon}7}}}{1}
+      {8}{{{ \color{Maroon}8}}}{1}
+      {9}{{{ \color{Maroon}9}}}{1}
+      {:}{{{ \color{BrickRed}{:}}}}{1}
+      {,}{{{ \color{BrickRed}{,}}}}{1}
+      {\{}{{{ \color{OliveGreen}{\{}}}}{1}
+      {\}}{{{ \color{OliveGreen}{\}}}}}{1}
+      {[}{{{ \color{OliveGreen}{[}}}}{1}
+      {]}{{{ \color{OliveGreen}{]}}}}{1},
+  }
+  % \lstset{language=json}
+\fi
+\makeatother
+
+% -------  array & table helpers  ---------------------------
+% AAAI comments these out.
+\makeatletter
+\if@isAAAI\else
+  \usepackage{array}
+  \newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}
+  \newcommand{\RomanNumeralCaps}[1]{\MakeUppercase{\romannumeral #1}}
+  \newcommand{\rnumcap}[1]{\MakeUppercase{\romannumeral #1}}
+  \newcommand\T{\rule{0pt}{3.4mm}}
+  \newcommand\B{\rule[-1.5mm]{0pt}{0pt}}
+\fi
+\makeatother
+
+% -------  tcolorbox summary environment  -------------------
+% ICML and NeurIPS do not define this environment.
+\makeatletter
+\if@isICML\else\if@isNIPS\else
+  \usepackage[most]{tcolorbox}
+  \newtcolorbox[auto counter]{summary}[1][]{title={\bfseries Summary~\thetcbcounter},enhanced,
+    coltitle=black,
+    colback=white,
+    top=0.3in,
+    attach boxed title to top left=
+    {xshift=1.5em,yshift=-\tcboxedtitleheight/2},boxrule=0.5pt, sharp corners,
+    fonttitle=\bfseries,
+    boxed title style={size=small,colback=white,colframe=white},#1}
+\fi\fi
+\makeatother

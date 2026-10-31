@@ -1,0 +1,299 @@
+\usepackage{booktabs}
+
+\usepackage[english]{babel}
+% \usepackage{natbib} %\bibliographystyle{plainnat}
+% \let\oldcite\cite
+% \renewcommand{\cite}[1]{\citep{#1}}
+
+\usepackage{graphicx}
+% \usepackage{float} % not used in AAAI
+% \usepackage{wrapfig}
+% \usepackage[normalem]{ulem}
+% \usepackage[T1]{fontenc}
+% \usepackage{url}
+% \usepackage{hyperref}
+% \usepackage[backend=biber,style=numeric-comp,sorting=none]{biblatex}
+
+\usepackage{bm}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{pifont}
+% \usepackage{times}
+% \usepackage{latexsym}
+% \usepackage{gensymb}
+% \usepackage{textgreek}
+
+
+\usepackage{algorithm}
+% \usepackage{algorithmic}
+\usepackage{algpseudocode}
+
+\usepackage{textcomp}
+\usepackage{multirow}
+% \usepackage{lscape}
+\usepackage{subcaption}
+% \usepackage{subfigure}
+
+\usepackage{microtype}
+\usepackage{mdframed}
+
+
+
+
+\usepackage{tabularx, colortbl, xcolor}
+% \usepackage[dvipsnames]{xcolor}
+
+% \def\hexcolors{4A7BB7,91C4DE,FED081,F7834D}
+\definecolor{4A7BB7}{HTML}{4A7BB7}  % amaranth_red – deep red -X11: crimson
+\definecolor{91C4DE}{HTML}{91C4DE}  % amaranth_red – deep red -X11: crimson
+\definecolor{FED081}{HTML}{FED081}  % amaranth_red – deep red -X11: crimson
+\definecolor{F7834D}{HTML}{F7834D}  % amaranth_red – deep red -X11: crimson
+\definecolor{8ECFC9}{HTML}{8ECFC9}  % amaranth_red – deep red -X11: crimson
+\definecolor{FFBE7A}{HTML}{FFBE7A}  % amaranth_red – deep red -X11: crimson
+\definecolor{FA7F6F}{HTML}{FA7F6F}  % amaranth_red – deep red -X11: crimson
+\definecolor{82B0D2}{HTML}{82B0D2}  % amaranth_red – deep red -X11: crimson
+
+% \foreach \hex in \hexcolors {
+%   \expandafter\definecolor\csname \hex\endcsname{HTML}{\hex}
+% }
+
+% ----------------------------
+% �� Reds & Pinks
+% ----------------------------
+\definecolor{D62728}{HTML}{D62728}  % amaranth_red – deep red -X11: crimson
+\definecolor{E13333}{HTML}{E13333}  % myred – strong crimson red -X11: firebrick
+\definecolor{C63D52}{HTML}{C63D52}  % dark_scarlet – muted ruby red -X11: indianred
+\definecolor{F67088}{HTML}{F67088}  % coral – warm light red -X11: lightcoral
+\definecolor{F77189}{HTML}{F77189}  % ultrared – bright watermelon pink -X11: salmon
+\definecolor{FFB3B2}{HTML}{FFB3B2}  % myred1 – light strawberry pink -X11: lightpink
+
+% ----------------------------
+% �� Magenta & Purples
+% ----------------------------
+\definecolor{BF3E87}{HTML}{BF3E87}  % mymagenta – rich magenta rose -X11: mediumvioletred
+\definecolor{F584C5}{HTML}{F584C5}  % tearose – soft pink rose -X11: hotpink
+\definecolor{E377C2}{HTML}{E377C2}  % middle_purple – light pinkish purple -X11: orchid
+\definecolor{9467BD}{HTML}{9467BD}  % middle_blue_purple – soft purple -X11: mediumpurple
+\definecolor{7B7AB7}{HTML}{7b7ab7}  % ube – muted lavender purple -X11: lightslategray
+\definecolor{1B2278}{HTML}{1B2278}  % mypurple – dark royal blue-purple -X11: navy
+\definecolor{4E518B}{HTML}{4E518B}  % Twilight – deep indigo blue -X11: darkslateblue
+
+% ----------------------------
+% �� Blues
+% ----------------------------
+\definecolor{005397}{HTML}{005397}  % mycyan – deep navy cyan -X11: midnightblue
+\definecolor{023047}{HTML}{023047}  % prussian_blue – dark muted navy -X11: midnightblue
+\definecolor{1C3168}{HTML}{1C3168}  % catalina_blue – deep denim blue -X11: slateblue
+\definecolor{327BB7}{HTML}{327bb7}  % steel_blue – medium steel blue -X11: steelblue
+\definecolor{1F77B4}{HTML}{1F77B4}  % greenblue – mid blue cyan -X11: steelblue
+\definecolor{3BA3EC}{HTML}{3BA3EC}  % dodger_blue – clear sky blue -X11: deepskyblue
+\definecolor{90C9E6}{HTML}{90C9E6}  % cornflower – pastel sky blue -X11: skyblue
+\definecolor{94C3E1}{HTML}{94C3E1}  % myBlue2 – light sky blue -X11: skyblue
+\definecolor{A2B1C3}{HTML}{A2B1C3}  % myblue1 – cool steel gray-blue -X11: darkgray
+
+% ----------------------------
+% �� Teals & Greens
+% ----------------------------
+\definecolor{0192A8}{HTML}{0192A8}  % cerulean – vivid ocean blue -X11: darkcyan
+\definecolor{17BECF}{HTML}{17BECF}  % battery_charged_blue – clear teal -X11: darkturquoise
+\definecolor{219EBC}{HTML}{219EBC}  % pacific_blue – vibrant ocean blue -X11: lightseagreen
+\definecolor{36ADA4}{HTML}{36ADA4}  % keppel – teal turquoise -X11: lightseagreen
+\definecolor{2CA02C}{HTML}{2CA02C}  % wageningen_green – strong green -X11: forestgreen
+\definecolor{AEDB89}{HTML}{AEDB89}  % myBlue3 – pale green apple -X11: lightgreen
+\definecolor{B3FEAE}{HTML}{B3FEAE}  % mygreen1 – minty pastel green -X11: palegreen
+
+% ----------------------------
+% �� Yellows & Yellow-Greens
+% ----------------------------
+\definecolor{BCBD22}{HTML}{BCBD22}  % acid_green – muted chartreuse -X11: yellowgreen
+\definecolor{C99E31}{HTML}{C99E31}  % tussock – earthy mustard yellow -X11: goldenrod
+\definecolor{F0CF61}{HTML}{F0CF61}  % y15 – soft golden yellow -X11: khaki
+\definecolor{BC9F48}{HTML}{BC9F48}  % domino – muted golden brown -X11: peru
+
+% ----------------------------
+% �� Browns & Earth Tones
+% ----------------------------
+\definecolor{8C564B}{HTML}{8C564B}  % spicy_mix – earthy brown -X11: sienna
+\definecolor{BEA1A5}{HTML}{BEA1A5}  % b14 – dusty mauve rose -X11: rosybrown
+
+% ----------------------------
+% �� Pastels & Neutrals
+% ----------------------------
+\definecolor{BFB5D7}{HTML}{BFB5D7}  % p13 – pale lavender gray -X11: thistle
+\definecolor{FFD8B0}{HTML}{FFD8B0}  % mypink1 – peachy pastel pink -X11: navajowhite
+\definecolor{F3EEE3}{HTML}{F3EEE3}  % Merino – pale beige cream -X11: seashell
+\definecolor{D9D9D9}{HTML}{D9D9D9}  % light_silver – soft neutral gray -X11: gainsboro
+
+% ----------------------------
+% ⚫ Blacks & Near Blacks
+% ----------------------------
+\definecolor{000000}{HTML}{000000}  % myblack1 – pure black -X11: black
+\definecolor{333333}{HTML}{333333}  % myalmostblack – near black gray -X11: darkslategray
+
+
+% \newcolumntype{a}{>{\columncolor{thistle}}l}
+% \newcolumntype{b}{>{\columncolor{green}}c}
+% \DeclareRobustCommand{\hlpurple}[1]{{\sethlcolor{thistle}\hl{#1}}}
+% \DeclareRobustCommand{\hlpink}[1]{{\sethlcolor{pink}\hl{#1}}}
+% \DeclareRobustCommand{\hlgray}[1]{{\sethlcolor{gray!50!white}\hl{#1}}}
+
+% \usepackage{easyReview}
+% \renewcommand{\alertColor}{\textcolor{firebrick}}
+% \renewcommand{\addColor}{\textcolor{midnightblue}}
+
+
+\usepackage[capitalize,noabbrev]{cleveref}
+% \crefname{ineq}{Inequality}{Inequalities}
+% \creflabelformat{ineq}{#2{\upshape(#1)}#3} 
+% \crefname{obj}{Objective}{Objectives}
+% \creflabelformat{obj}{#2{\upshape(#1)}#3} 
+% \crefname{exp}{Expression}{Expressions}
+% \creflabelformat{exp}{#2{\upshape(#1)}#3} 
+
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+% \newtheorem{definition}{Definition}[section]
+% \newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+% \newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}{Example}[]
+% \newtheorem{example}{Example}[section]
+% \newtheorem{corpus}{Corpus Example}[section]
+
+% \newtheorem{requirement}{Requirement}[]
+% \newtheoremstyle{researchquestionstyle}{}{}{}{}{\bf}{}{.5em}{}
+% \theoremstyle{researchquestionstyle}
+% \newtheorem{rquestion}{Research Question:}[]
+
+% \makeatletter
+% \newtheorem*{rep@theorem}{\rep@title}
+% \creflabelformat{exp}{#2{\upshape(#1)}#3}
+% \newcommand{\newreptheorem}[2]{%
+% \newenvironment{rep#1}[1]{%
+%  \def\rep@title{#2 \ref{##1}}%
+%  \begin{rep@theorem}}%
+%  {\end{rep@theorem}}}
+% \makeatother
+
+		
+% \theoremstyle{remark}
+% % \newtheorem{example}{Example}[]
+% \newreptheorem{example}{Example}
+% \theoremstyle{plain}
+% % \newtheorem{theorem}{Theorem}[section]
+% \newreptheorem{theorem}{Theorem}
+% % \newtheorem{proposition}[theorem]{Proposition}
+% % \newtheorem{lemma}[theorem]{Lemma}
+% \newreptheorem{lemma}{Lemma}
+% % \newtheorem{corollary}[theorem]{Corollary}
+% \newreptheorem{corollary}{Corollary}
+
+
+
+\usepackage{braket}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\concat}{\mathbin{{+}\mspace{-8mu}{+}}}
+\newcommand{\inner}[1]{\left\langle#1\right\rangle}
+\usepackage{stmaryrd}
+\newcommand{\iverson}[1]{\left\llbracket#1\right\rrbracket}
+
+% \DeclareMathOperator*{\argmax}{arg\,max}
+% \DeclareMathOperator*{\argmin}{arg\,min}
+
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\usepackage{tikz-dependency}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{chains,scopes}
+\usetikzlibrary{arrows.meta,automata,positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\usepackage{pgfplots}
+% \usepackage{pgfplotstable}
+
+% \pgfplotsset{compat=newest}
+\usepgfplotslibrary{fillbetween}
+
+\pgfplotsset{
+  every axis/.append style = {thick},
+  tick style = {thick,black},
+  %
+  % #1 = x, y, or z
+  % #2 = the shift value
+  /tikz/normal shift/.code 2 args = {%
+    \pgftransformshift{%
+        \pgfpointscale{#2}{\pgfplotspointouternormalvectorofticklabelaxis{#1}}%
+    }%
+  },%
+  %
+  shift/.style = {
+    tick align        = outside,
+    scaled ticks      = false,
+    enlargelimits     = false,
+    ticklabel shift   = {#1},
+    axis lines*       = left,
+    xtick style       = {normal shift={x}{#1}},
+    ytick style       = {normal shift={y}{#1}},
+    x axis line style = {normal shift={x}{#1}},
+    y axis line style = {normal shift={y}{#1}},
+  },
+  shift/.default = 10pt,
+  shift3d/.style = {
+    shift=#1,
+    ztick style       = {normal shift={z}{#1}},
+    z axis line style = {normal shift={z}{#1}},
+  },
+  shift3d/.default = 10pt,
+}
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=1cm, minimum height=0.5cm,text centered, draw=black]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=2cm, minimum height=0.63cm, text centered, draw=black]
+\tikzstyle{process} = [rectangle, minimum width=2cm, minimum height=0.5cm, text centered,draw=black]
+\tikzstyle{process_n} = [rectangle, minimum width=1.5cm, minimum height=0.5cm, text centered,text width=1.5cm, draw=black]
+\tikzstyle{decision} = [diamond, minimum width=1.2cm, minimum height=0.5cm, text width=1.5cm, text centered, aspect=1.5, draw=black]
+\tikzstyle{arrow} = [->,>=stealth]
+% \tikzstyle{arrow} = [thick, draw=myblue1, line width=2, ->, >=stealth]
+
+
+
+
+% \usepackage{listings}
+% \lstset{
+%   language=Python,
+% %   numbers=left,
+% %   numberstyle=\tiny,
+%   stepnumber=1,
+%   numbersep=5pt,
+%   tabsize=4,
+%   basicstyle=\scriptsize\ttfamily,
+%   columns=fullflexible,
+%   keepspaces,
+% %   xleftmargin=\parindent,
+%   showstringspaces=false
+% }
+
+% \newcommand{\RomanNumeralCaps}[1]{\MakeUppercase{\romannumeral #1}}
+% \usepackage{array}
+% \newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}
+% \newcommand\T{\rule{0pt}{3.4mm}}
+% \newcommand\B{\rule[-1.5mm]{0pt}{0pt}}
+% \newcommand{\rnumcap}[1]{\MakeUppercase{\romannumeral #1}}
+
+% \renewcommand\paragraph[1]{{\vspace{1mm}\noindent\bfseries #1 }}
+\usepackage[most]{tcolorbox}
+\newtcolorbox[auto counter]{summary}[1][]{title={\bfseries Summary~\thetcbcounter},enhanced,%drop shadow={},
+  coltitle=black,
+  colback=white,
+  top=0.3in,
+  attach boxed title to top left=
+  {xshift=1.5em,yshift=-\tcboxedtitleheight/2},boxrule=0.5pt,  sharp corners, fonttitle=\bfseries,boxed title style={size=small,colback=white,colframe=white},#1}

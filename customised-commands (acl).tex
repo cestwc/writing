@@ -1,0 +1,265 @@
+  % \usepackage{easyReview}
+  \usepackage[english]{babel}
+  % \usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+  \usepackage{geometry}
+
+  \usepackage{natbib} %\bibliographystyle{plainnat}
+  \let\oldcite\cite
+  \renewcommand{\cite}[1]{\citep{#1}}
+
+  \usepackage{graphicx}
+  \usepackage{microtype}
+  % \usepackage{subfigure}
+  \usepackage{booktabs}
+
+  \usepackage{float}
+  \usepackage{wrapfig}
+  \usepackage[normalem]{ulem}
+
+
+  \usepackage{bm}
+  \usepackage{textcomp}
+  \usepackage{amssymb}
+  \usepackage{amsmath}
+  \usepackage{amsthm}
+  \usepackage{amsfonts}
+  \usepackage{mathtools}
+  \usepackage{pifont}
+
+  \usepackage{algorithm}
+  \usepackage{algorithmic}
+  % \usepackage{algpseudocode}
+
+  \usepackage{times}
+  % \usepackage{latexsym}
+  \usepackage{gensymb}
+
+  \usepackage{textcomp}
+  \usepackage{multirow}
+  \usepackage{lscape}
+  \usepackage{subcaption}
+
+  \usepackage{mdframed}
+  \usepackage{hyperref}
+  \usepackage{textgreek}
+  % \usepackage[backend=biber,style=numeric-comp,sorting=none]{biblatex}
+  \usepackage{tabularx, colortbl}
+  \usepackage[dvipsnames]{xcolor}
+  \definecolor{mygray}{gray}{0.95}
+  \definecolor{mycyan}{HTML}{005397}
+  \definecolor{myred}{HTML}{E13333}
+  \definecolor{mymagenta}{HTML}{BF3E87}
+  \definecolor{mypurple}{HTML}{1B2278}
+
+  \definecolor{tearose}{HTML}{F584C5}
+  \definecolor{coral}{HTML}{F67088}
+  \definecolor{dodger_blue}{HTML}{3BA3EC}
+  \definecolor{domino}{HTML}{BC9F48}
+  \definecolor{domino}{HTML}{BC9F48}
+  \definecolor{domino}{HTML}{BC9F48}
+  \definecolor{catalina_blue}{HTML}{1C3168}
+  \definecolor{catalina_blue}{HTML}{1C3168}
+  \definecolor{catalina_blue}{HTML}{1C3168}
+  \definecolor{dark_scarlet}{HTML}{C63D52}
+  \definecolor{cerulean}{HTML}{0192A8}
+
+  \definecolor{tussock}{HTML}{C99E31}
+  \definecolor{p13}{HTML}{BFB5D7}
+  \definecolor{b14}{HTML}{BEA1A5}
+  \definecolor{y15}{HTML}{F0Cf61}
+  \definecolor{Merino}{HTML}{F3EEE3}
+
+  \definecolor{mygray}{gray}{0.95}
+  \definecolor{mycyan}{HTML}{005397}
+  \definecolor{myred}{HTML}{E13333}
+  \definecolor{mymagenta}{HTML}{BF3E87}
+  \definecolor{mypurple}{HTML}{1B2278}
+
+  \definecolor{tearose}{HTML}{F584C5}
+  \definecolor{coral}{HTML}{F67088}
+  \definecolor{dodger_blue}{HTML}{3BA3EC}
+  \definecolor{domino}{HTML}{BC9F48}
+  \definecolor{domino}{HTML}{BC9F48}
+  \definecolor{catalina_blue}{HTML}{1C3168}
+  \definecolor{catalina_blue}{HTML}{1C3168}
+  \definecolor{dark_scarlet}{HTML}{C63D52}
+  \definecolor{cerulean}{HTML}{0192A8}
+
+  \definecolor{tussock}{HTML}{C99E31}
+  \definecolor{p13}{HTML}{BFB5D7}
+  \definecolor{b14}{HTML}{BEA1A5}
+  \definecolor{y15}{HTML}{F0Cf61}
+
+  \definecolor{Merino}{HTML}{F3EEE3}
+  \definecolor{Twilight}{HTML}{4E518B}
+
+  \definecolor{light_silver}{HTML}{D9D9D9}
+
+  \definecolor{prussian_blue}{HTML}{023047}
+  \definecolor{pacific_blue}{HTML}{219EBC}
+  \definecolor{cornflower}{HTML}{90C9E6}
+
+
+  \definecolor{mypink1}{RGB}{255, 216, 176}
+  \definecolor{myblack1}{RGB}{0, 0, 0}
+  \definecolor{myalmostblack}{RGB}{51, 51, 51}
+  \definecolor{mygreen1}{RGB}{179, 254, 174}
+  \definecolor{myBlue2}{RGB}{148, 195, 225}
+  \definecolor{myBlue3}{RGB}{174, 219, 137}
+  \definecolor{myred1}{RGB}{255, 179, 178}
+  \definecolor{myblue1}{RGB}{162, 177, 195}
+
+\definecolor{headerpink}{RGB}{255, 235, 235}
+\definecolor{headergreen}{RGB}{220, 255, 220}
+\definecolor{roworange}{RGB}{255, 235, 215}
+\definecolor{rowgray}{RGB}{235, 235, 235}
+\definecolor{textorange}{RGB}{230, 145, 56}
+    
+
+
+  \newcolumntype{a}{>{\columncolor{p13}}l}
+  % \newcolumntype{b}{>{\columncolor{green}}c}
+  \DeclareRobustCommand{\hlpurple}[1]{{\sethlcolor{p13}\hl{#1}}}
+  \DeclareRobustCommand{\hlpink}[1]{{\sethlcolor{pink}\hl{#1}}}
+  \DeclareRobustCommand{\hlgray}[1]{{\sethlcolor{mygray}\hl{#1}}}
+
+
+  % \renewcommand{\alertColor}{\textcolor{myred}}
+  % \renewcommand{\addColor}{\textcolor{mycyan}}
+
+
+  \usepackage[capitalize,noabbrev]{cleveref}
+  \crefname{ineq}{Inequality}{Inequalities}
+  \creflabelformat{ineq}{#2{\upshape(#1)}#3} 
+
+
+  \makeatletter
+  \newtheorem*{rep@theorem}{\rep@title}
+  \newcommand{\newreptheorem}[2]{%
+  \newenvironment{rep#1}[1]{%
+  \def\rep@title{#2 \ref{##1}}%
+  \begin{rep@theorem}}%
+  {\end{rep@theorem}}}
+  \makeatother
+
+
+  \theoremstyle{remark}
+  \newtheorem{example}{Example}[]
+  \newreptheorem{example}{Example}
+
+  \theoremstyle{plain}
+  \newtheorem{theorem}{Theorem}[section]
+  \newreptheorem{theorem}{Theorem}
+
+  \newtheorem{proposition}[theorem]{Proposition}
+  \newtheorem{lemma}[theorem]{Lemma}
+  \newreptheorem{lemma}{Lemma}
+
+  \newtheorem{corollary}[theorem]{Corollary}
+  \newreptheorem{corollary}{Corollary}
+
+  \theoremstyle{definition}
+  \newtheorem{definition}[theorem]{Definition}
+  \newtheorem{assumption}[theorem]{Assumption}
+  \theoremstyle{remark}
+  \newtheorem{remark}[theorem]{Remark}
+
+  % \theoremstyle{definition}
+  % \newtheorem{definition}{Definition}[section]
+  % \theoremstyle{remark}
+  % \newtheorem{example}{Example}[section]
+  % \theoremstyle{remark}
+  % \newtheorem{corpus}{Corpus Example}[section]
+
+  % \newtheorem{requirement}{Requirement}[]
+  % \newtheoremstyle{researchquestionstyle}{}{}{}{}{\bf}{}{.5em}{}
+  % \theoremstyle{researchquestionstyle}
+  % \newtheorem{rquestion}{Research Question:}[]
+
+
+
+
+  \usepackage{braket}
+  \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+  \newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+  \newcommand{\concat}{\mathbin{{+}\mspace{-8mu}{+}}}
+  \newcommand{\inner}[1]{\left\langle#1\right\rangle}
+  \usepackage{stmaryrd}
+  \newcommand{\iverson}[1]{\left\llbracket#1\right\rrbracket}
+
+  \DeclareMathOperator*{\argmax}{arg\,max}
+  \DeclareMathOperator*{\argmin}{arg\,min}
+
+  \usepackage{tikz}
+  \usetikzlibrary{trees}
+  \usepackage{tikz-dependency}
+  \usepackage{tikz-3dplot}
+  \usetikzlibrary{chains,scopes}
+  \usetikzlibrary{arrows.meta,automata,positioning}
+  \usetikzlibrary{shapes.geometric, arrows}
+  \usepackage{pgfplots}
+  \pgfplotsset{compat=newest}
+  \usepgfplotslibrary{fillbetween}
+
+  \pgfplotsset{
+    every axis/.append style = {thick},
+    tick style = {thick,black},
+    %
+    % #1 = x, y, or z
+    % #2 = the shift value
+    /tikz/normal shift/.code 2 args = {%
+      \pgftransformshift{%
+          \pgfpointscale{#2}{\pgfplotspointouternormalvectorofticklabelaxis{#1}}%
+      }%
+    },%
+    %
+    shift/.style = {
+      tick align        = outside,
+      scaled ticks      = false,
+      enlargelimits     = false,
+      ticklabel shift   = {#1},
+      axis lines*       = left,
+      xtick style       = {normal shift={x}{#1}},
+      ytick style       = {normal shift={y}{#1}},
+      x axis line style = {normal shift={x}{#1}},
+      y axis line style = {normal shift={y}{#1}},
+    },
+    shift/.default = 10pt,
+    shift3d/.style = {
+      shift=#1,
+      ztick style       = {normal shift={z}{#1}},
+      z axis line style = {normal shift={z}{#1}},
+    },
+    shift3d/.default = 10pt,
+  }
+
+
+  \usepackage{listings}
+  \lstset{
+    language=Python,
+  %   numbers=left,
+  %   numberstyle=\tiny,
+    stepnumber=1,
+    numbersep=5pt,
+    tabsize=4,
+    basicstyle=\scriptsize\ttfamily,
+    columns=fullflexible,
+    keepspaces,
+  %   xleftmargin=\parindent,
+    showstringspaces=false
+  }
+
+  \newcommand{\RomanNumeralCaps}[1]{\MakeUppercase{\romannumeral #1}}
+  \usepackage{array}
+  \newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}
+  \newcommand\T{\rule{0pt}{3.4mm}}
+  \newcommand\B{\rule[-1.5mm]{0pt}{0pt}}
+  \newcommand{\rnumcap}[1]{\MakeUppercase{\romannumeral #1}}
+
+  \usepackage[most]{tcolorbox}
+  \newtcolorbox[auto counter]{summary}[1][]{title={\bfseries Summary~\thetcbcounter},enhanced,%drop shadow={},
+    coltitle=black,
+    colback=white,
+    top=0.3in,
+    attach boxed title to top left=
+    {xshift=1.5em,yshift=-\tcboxedtitleheight/2},boxrule=0.5pt,  sharp corners, fonttitle=\bfseries,boxed title style={size=small,colback=white,colframe=white},#1}

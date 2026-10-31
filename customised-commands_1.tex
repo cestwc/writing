@@ -1,0 +1,411 @@
+% ============================================================
+%  customised-commands.tex  —  merged from all venue variants
+%  Variants: (base/generic), ACL, ACM (acmart), LNCS (llncs), Elsevier (elsarticle)
+%
+%  Auto-detection uses \@ifclassloaded{<class>}{<yes>}{<no>}.
+%  All venue-specific logic is resolved at compile time — no
+%  manual editing needed when switching document class.
+% ============================================================
+
+\makeatletter
+
+% ============================================================
+%  CONVENIENCE BOOLEANS  (set once, used throughout)
+% ============================================================
+\newif\if@isACM    \@isACMfalse
+\newif\if@isLNCS   \@isLNCSfalse
+\newif\if@isELS    \@isELSfalse
+\newif\if@isACL    \@isACLfalse
+
+\@ifclassloaded{acmart}    {\@isACMtrue}{}
+\@ifclassloaded{llncs}     {\@isLNCStrue}{}
+\@ifclassloaded{elsarticle}{\@isELStrue}{}
+% ACL uses several class names across years
+\@ifclassloaded{acl}       {\@isACLtrue}{}
+\@ifclassloaded{acl2023}   {\@isACLtrue}{}
+\@ifclassloaded{acl_natbib}{\@isACLtrue}{}
+
+\makeatother
+
+% -------  optional / review package  -----------------------
+% \usepackage{easyReview}
+
+% -------  language  ----------------------------------------
+\usepackage[english]{babel}
+
+% -------  geometry  ----------------------------------------
+% ACL loads geometry explicitly; other classes manage their own margins.
+\makeatletter
+\if@isACL
+  \usepackage{geometry}
+  % \usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\fi
+\makeatother
+
+% -------  bibliography  ------------------------------------
+% ACM (acmart) has its own citation machinery — skip natbib there.
+\makeatletter
+\if@isACM\else
+  \usepackage{natbib}  % \bibliographystyle{plainnat}
+  \let\oldcite\cite
+  \renewcommand{\cite}[1]{\citep{#1}}
+\fi
+\makeatother
+% \usepackage[backend=biber,style=numeric-comp,sorting=none]{biblatex}
+
+% -------  graphics & layout  -------------------------------
+\usepackage{graphicx}
+\usepackage{microtype}
+% \usepackage{subfigure}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage[normalem]{ulem}
+
+% -------  math  --------------------------------------------
+\usepackage{bm}
+\usepackage{textcomp}
+% amssymb: ACM commented it out (acmart already pulls it in via newtxmath).
+\makeatletter
+\if@isACM\else
+  \usepackage{amssymb}
+\fi
+\makeatother
+\usepackage{amsmath}
+% amsthm: llncs defines its own theorem environments — skip it there.
+\makeatletter
+\if@isLNCS\else
+  \usepackage{amsthm}
+\fi
+\makeatother
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{pifont}
+
+% -------  algorithms  --------------------------------------
+\usepackage{algorithm}
+% ACM uses algpseudocode; all other venues use algorithmic.
+\makeatletter
+\if@isACM
+  \usepackage{algpseudocode}
+\else
+  \usepackage{algorithmic}
+\fi
+\makeatother
+
+% LNCS-only: inline comment command for algorithm floats.
+\makeatletter
+\if@isLNCS
+  \newcommand{\algcomment}[2][gray]{%
+    \unskip\hfill{\footnotesize\textcolor{#1}{// #2}}%
+  }
+\fi
+\makeatother
+
+% -------  fonts & symbols  ---------------------------------
+% ACM (acmart) manages its own fonts — \usepackage{times} conflicts.
+\makeatletter
+\if@isACM\else
+  \usepackage{times}
+\fi
+\makeatother
+% \usepackage{latexsym}
+\usepackage{gensymb}
+
+% -------  table & figure utilities  ------------------------
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{subcaption}
+
+% -------  frames, boxes, hyperlinks  -----------------------
+\usepackage{mdframed}
+\usepackage{hyperref}
+\usepackage{textgreek}
+
+% -------  color & table color  -----------------------------
+\usepackage{tabularx, colortbl}
+\usepackage[dvipsnames]{xcolor}
+
+% ACM-only: TikZ physics shorthand color.
+% xcol (steel blue) -> RoyalBlue (dvipsnames)
+\makeatletter
+\if@isACM
+  \colorlet{xcol}{RoyalBlue}
+\fi
+\makeatother
+
+% ACL table header/row shading — available color names for use in tables:
+%   headerpink  -> Salmon!30    headergreen -> LimeGreen!30
+%   roworange   -> Peach!50     rowgray     -> lightgray!50
+%   textorange  -> BurntOrange
+
+% -------  column types & highlight commands  ---------------
+% Color mapping from originals to xcolor dvipsnames:
+%   p13 (soft lavender) -> Lavender
+%   mygray (near-white) -> lightgray
+%   pink                -> Pink
+\newcolumntype{a}{>{\columncolor{Lavender}}l}
+% \newcolumntype{b}{>{\columncolor{LimeGreen}}c}
+\DeclareRobustCommand{\hlpurple}[1]{{\sethlcolor{Lavender}\hl{#1}}}
+\DeclareRobustCommand{\hlpink}[1]{{\sethlcolor{Pink}\hl{#1}}}
+\DeclareRobustCommand{\hlgray}[1]{{\sethlcolor{lightgray}\hl{#1}}}
+
+% \renewcommand{\alertColor}{\textcolor{Red}}
+% \renewcommand{\addColor}{\textcolor{Cyan}}
+
+% -------  cleveref  ----------------------------------------
+\usepackage[capitalize,noabbrev]{cleveref}
+\crefname{ineq}{Inequality}{Inequalities}
+\creflabelformat{ineq}{#2{\upshape(#1)}#3}
+% obj / exp cref names used in Elsevier and LNCS variants.
+\makeatletter
+\if@isELS
+  \crefname{obj}{Objective}{Objectives}
+  \creflabelformat{obj}{#2{\upshape(#1)}#3}
+  \crefname{exp}{Expression}{Expressions}
+  \creflabelformat{exp}{#2{\upshape(#1)}#3}
+\fi
+\if@isLNCS
+  \crefname{obj}{Objective}{Objectives}
+  \creflabelformat{obj}{#2{\upshape(#1)}#3}
+  \crefname{exp}{Expression}{Expressions}
+  \creflabelformat{exp}{#2{\upshape(#1)}#3}
+\fi
+\makeatother
+
+% -------  theorem environments  ----------------------------
+% The reptheorem helper lets you restate theorems by label.
+% Only used in base/ACL variants.
+\makeatletter
+\if@isACM\else\if@isELS\else\if@isLNCS\else
+  \newtheorem*{rep@theorem}{\rep@title}
+  \newcommand{\newreptheorem}[2]{%
+  \newenvironment{rep#1}[1]{%
+  \def\rep@title{#2 \ref{##1}}%
+  \begin{rep@theorem}}%
+  {\end{rep@theorem}}}
+\fi\fi\fi
+\makeatother
+
+% LNCS defines all theorem environments itself — skip them there.
+\makeatletter
+\if@isLNCS\else
+
+  \theoremstyle{remark}
+  \newtheorem{example}{Example}[]
+  \if@isACM\else\if@isELS\else
+    \newreptheorem{example}{Example}
+  \fi\fi
+
+  \theoremstyle{plain}
+  \newtheorem{theorem}{Theorem}[section]
+  \if@isACM\else\if@isELS\else
+    \newreptheorem{theorem}{Theorem}
+  \fi\fi
+
+  \newtheorem{proposition}[theorem]{Proposition}
+  \newtheorem{lemma}[theorem]{Lemma}
+  \if@isACM\else\if@isELS\else
+    \newreptheorem{lemma}{Lemma}
+  \fi\fi
+
+  \newtheorem{corollary}[theorem]{Corollary}
+  \if@isACM\else\if@isELS\else
+    \newreptheorem{corollary}{Corollary}
+  \fi\fi
+
+  \theoremstyle{definition}
+  \newtheorem{definition}[theorem]{Definition}
+  \newtheorem{assumption}[theorem]{Assumption}
+  \theoremstyle{remark}
+  \newtheorem{remark}[theorem]{Remark}
+
+\fi % end \if@isLNCS\else
+\makeatother
+
+% ACM-only theorem types.
+\makeatletter
+\if@isACM
+  \newtheorem{requirement}{Requirement}[]
+  \newtheoremstyle{researchquestionstyle}{}{}{}{}{{\bf}}{}{.5em}{}
+  \theoremstyle{researchquestionstyle}
+  \newtheorem{rquestion}{Research Question:}[]
+\fi
+\makeatother
+
+% -------  math operators & notation  -----------------------
+\usepackage{braket}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\concat}{\mathbin{{+}\mspace{-8mu}{+}}}
+\newcommand{\inner}[1]{\left\langle#1\right\rangle}
+\usepackage{stmaryrd}
+\newcommand{\iverson}[1]{\left\llbracket#1\right\rrbracket}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+% -------  physics (ACM only)  ------------------------------
+\makeatletter
+\if@isACM
+  \usepackage{physics}
+\fi
+\makeatother
+
+% -------  TikZ & PGFPlots  ---------------------------------
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\usepackage{tikz-dependency}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{chains,scopes}
+\usetikzlibrary{arrows.meta,automata,positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc, fit, shadows}
+
+% ACM-only: enforce LaTeX-style arrow heads globally.
+\makeatletter
+\if@isACM
+  \tikzset{>=latex}
+\fi
+\makeatother
+
+\usepackage{pgfplots}
+% compat=newest and fillbetween used in base/ACL; set conservatively for others.
+\makeatletter
+\if@isACM\else\if@isLNCS\else\if@isELS\else
+  \pgfplotsset{compat=newest}
+  \usepgfplotslibrary{fillbetween}
+\fi\fi\fi
+\makeatother
+
+\pgfplotsset{
+  every axis/.append style = {thick},
+  tick style = {thick,black},
+  %
+  % #1 = x, y, or z  |  #2 = the shift value
+  /tikz/normal shift/.code 2 args = {%
+    \pgftransformshift{%
+        \pgfpointscale{#2}{\pgfplotspointouternormalvectorofticklabelaxis{#1}}%
+    }%
+  },%
+  shift/.style = {
+    tick align        = outside,
+    scaled ticks      = false,
+    enlargelimits     = false,
+    ticklabel shift   = {#1},
+    axis lines*       = left,
+    xtick style       = {normal shift={x}{#1}},
+    ytick style       = {normal shift={y}{#1}},
+    x axis line style = {normal shift={x}{#1}},
+    y axis line style = {normal shift={y}{#1}},
+  },
+  shift/.default = 10pt,
+  shift3d/.style = {
+    shift=#1,
+    ztick style       = {normal shift={z}{#1}},
+    z axis line style = {normal shift={z}{#1}},
+  },
+  shift3d/.default = 10pt,
+}
+
+% TikZ flow-chart styles — Elsevier and LNCS variants only.
+\makeatletter
+\if@isELS
+  \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=1cm, minimum height=0.5cm, text centered, draw=black]
+  \tikzstyle{io}        = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=2cm, minimum height=0.63cm, text centered, draw=black]
+  \tikzstyle{process}   = [rectangle, minimum width=2cm,   minimum height=0.5cm, text centered, draw=black]
+  \tikzstyle{process_n} = [rectangle, minimum width=1.5cm, minimum height=0.5cm, text centered, text width=1.5cm, draw=black]
+  \tikzstyle{decision}  = [diamond, minimum width=1.2cm, minimum height=0.5cm, text width=1.5cm, text centered, aspect=1.5, draw=black]
+  \tikzstyle{arrow}     = [->,>=stealth]
+\fi
+\if@isLNCS
+  \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=1cm, minimum height=0.5cm, text centered, draw=black]
+  \tikzstyle{io}        = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=2cm, minimum height=0.63cm, text centered, draw=black]
+  \tikzstyle{process}   = [rectangle, minimum width=2cm,   minimum height=0.5cm, text centered, draw=black]
+  \tikzstyle{process_n} = [rectangle, minimum width=1.5cm, minimum height=0.5cm, text centered, text width=1.5cm, draw=black]
+  \tikzstyle{decision}  = [diamond, minimum width=1.2cm, minimum height=0.5cm, text width=1.5cm, text centered, aspect=1.5, draw=black]
+  \tikzstyle{arrow}     = [->,>=stealth]
+  % Anchor-highlight helper (LNCS only)
+  \newcommand{\markline}[1]{%
+    \tikz[remember picture,baseline] \node (#1) {};%
+  }
+\fi
+\makeatother
+
+% -------  font icons (ACM only)  ---------------------------
+\makeatletter
+\if@isACM
+  \usepackage{fontawesome5}
+  % \usepackage{emoji}   % requires LuaLaTeX/XeLaTeX
+\fi
+\makeatother
+
+% -------  code listings  -----------------------------------
+\usepackage{listings}
+\lstset{
+  language=Python,
+%   numbers=left,
+%   numberstyle=\tiny,
+  stepnumber=1,
+  numbersep=5pt,
+  tabsize=4,
+  basicstyle=\scriptsize\ttfamily,
+  columns=fullflexible,
+  keepspaces,
+%   xleftmargin=\parindent,
+  showstringspaces=false
+}
+
+% JSON language definition (ACM only).
+% Color mapping: numb -> Maroon | punct -> BrickRed | delim -> OliveGreen
+\makeatletter
+\if@isACM
+  \lstdefinelanguage{json}{
+    basicstyle=\scriptsize\ttfamily,
+    numbers=none,
+    stepnumber=1,
+    numbersep=5pt,
+    showstringspaces=false,
+    breaklines=true,
+    frame=single,
+    backgroundcolor=\color{lightgray!30},
+    literate=
+     *{0}{{{ \color{Maroon}0}}}{1}
+      {1}{{{ \color{Maroon}1}}}{1}
+      {2}{{{ \color{Maroon}2}}}{1}
+      {3}{{{ \color{Maroon}3}}}{1}
+      {4}{{{ \color{Maroon}4}}}{1}
+      {5}{{{ \color{Maroon}5}}}{1}
+      {6}{{{ \color{Maroon}6}}}{1}
+      {7}{{{ \color{Maroon}7}}}{1}
+      {8}{{{ \color{Maroon}8}}}{1}
+      {9}{{{ \color{Maroon}9}}}{1}
+      {:}{{{ \color{BrickRed}{:}}}}{1}
+      {,}{{{ \color{BrickRed}{,}}}}{1}
+      {\{}{{{ \color{OliveGreen}{\{}}}}{1}
+      {\}}{{{ \color{OliveGreen}{\}}}}}{1}
+      {[}{{{ \color{OliveGreen}{[}}}}{1}
+      {]}{{{ \color{OliveGreen}{]}}}}{1},
+  }
+  % \lstset{language=json}
+\fi
+\makeatother
+
+% -------  array & table helpers  ---------------------------
+\usepackage{array}
+\newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}
+\newcommand{\RomanNumeralCaps}[1]{\MakeUppercase{\romannumeral #1}}
+\newcommand{\rnumcap}[1]{\MakeUppercase{\romannumeral #1}}
+\newcommand\T{\rule{0pt}{3.4mm}}
+\newcommand\B{\rule[-1.5mm]{0pt}{0pt}}
+
+% -------  tcolorbox  ---------------------------------------
+\usepackage[most]{tcolorbox}
+\newtcolorbox[auto counter]{summary}[1][]{title={\bfseries Summary~\thetcbcounter},enhanced,
+  coltitle=black,
+  colback=white,
+  top=0.3in,
+  attach boxed title to top left=
+  {xshift=1.5em,yshift=-\tcboxedtitleheight/2},boxrule=0.5pt, sharp corners,
+  fonttitle=\bfseries,
+  boxed title style={size=small,colback=white,colframe=white},#1}
